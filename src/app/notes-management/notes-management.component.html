@@ -1,0 +1,36 @@
+<div class="d-flex" id="content-wrapper">
+    <div id="page-content-wrapper" class="w-100 bg-light-blue">
+        <app-head-nav></app-head-nav>
+        <div class="container">
+            <button type="button" class="btn btn-secondary">Tag1</button>
+            <button type="button" class="btn btn-secondary">Tag2</button>
+            <button type="button" class="btn btn-secondary">Tag3</button>
+            <button type="button" style="background-color:greenyellow; border-radius: 50%;"class="btn btn-success">Add Note</button>
+        </div>
+        <div *ngFor="let note of notes">
+            <div class="card card-blog" style="position: relative; left: 25%;">
+                
+                <div class="table">
+                    <button class="button-update">Update</button>
+                    <button class="button-delete">Delete</button>
+                    <h6 class="category text-success"><i class="fa fa-university"></i> {{note.tag}}</h6>
+                    <h4 class="card-caption"><a>{{note.title}}</a></h4>
+                    
+                    <p class="card-description"> {{note.text}}</p>
+                    <div class="ftr">
+                        <div class="author">
+                            <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-512.png" alt="..." class="avatar img-raised"> <span>Pepe</span> 
+                        </div>
+                        <div class="stats"> 
+                            <i class="fa fa-clock-o"></i>{{note.created_at}}
+                            <i class="fa fa-wrench" aria-hidden="true"></i>{{note.updated_at}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
