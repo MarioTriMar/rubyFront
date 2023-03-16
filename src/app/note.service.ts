@@ -12,4 +12,9 @@ export class NoteService {
   getAllNotes(){
     return this.httpClient.get<Note[]>(this.baseURL+"get_allNotes");
   }
+  deleteNote(id:any){
+    console.log(id.$oid)
+    return this.httpClient.delete(this.baseURL+"delete_note?_id=" +id.$oid
+    )
+  }
 }

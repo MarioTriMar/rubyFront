@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../note.service';
 import { Note } from '../note';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-notes-management',
   templateUrl: './notes-management.component.html',
@@ -23,5 +24,17 @@ export class NotesManagementComponent implements OnInit {
     },error =>{
       console.log(error)
     })
+  }
+  deleteNote(note:Note){
+    this.noteService.deleteNote(note._id).subscribe(data=>{
+      alert("Borrado")
+      this.getAllNotes()
+    },error=>{
+      console.log(error)
+    })
+    
+  }
+  show(){
+    alert("esta")
   }
 }
