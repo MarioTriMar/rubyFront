@@ -5,7 +5,6 @@
         <div class="btn-center">
             <button class="btn btn-success"(click)="createNote()" >Add note</button>
         </div>
-        
         <div class="col-lg-4 row-cards" *ngFor="let note of notes">
             <div class="col-md-9">
                 <div class="card p-3 mb-2">
@@ -14,18 +13,19 @@
                             <img class="img-card" src="https://assets.stickpng.com/images/584a9b47b080d7616d298778.png">
                             <div class="ms-2 c-details">
                                 <h6 class="mb-0">{{note.idUser}}</h6> <span>{{note.created_at.toString().substring(0,10)}}</span>
-                            </div>
-                        </div>
+                            </div>                            </div>
                         <div class="badge"> <span>{{note.tag}}</span> </div>
                     </div>
                     <div class="mt-5">
                         <h3 class="heading">{{note.title}}</h3>
                         <p>{{note.text.substring(0,25)}}.....</p>
-
+        
                     </div>
                 </div>
             </div>
         </div>
+        
+        
     </div>
     
         

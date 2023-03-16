@@ -55,3 +55,12 @@ body {
 .text2 {
     color: #a5aec0
 }
+
+.btn-center{
+display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 60px; 
+    margin: auto;
+}
+
