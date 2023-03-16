@@ -1,23 +1,57 @@
-
-
-.text-center{
-    margin: auto;
-    width: 80%; 
-    
-    margin-top: 20px;  
+body {
+    background-color: #eee
 }
 
+.card {
+    border: none;
+    border-radius: 10px
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
 .img-card{
-    width: 60%;
-    height: 60%;
-    margin-bottom: 10px;
+    width: 16%;
+    height: 87%;
 }
-.btn-success{
-    align-self: center;
-}
-.btn-center{
-    margin-top: 15px;
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 15px;
     display: flex;
-  justify-content: center;
-  /* Asegura que el contenedor ocupe toda la altura de su contenedor padre */
+    align-items: center;
+    justify-content: center;
+    font-size: 39px
+}
+
+.badge span {
+    background-color: #fffbec;
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center
+}
+
+.progress {
+    height: 10px;
+    border-radius: 10px
+}
+
+.progress div {
+    background-color: red
+}
+
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.text2 {
+    color: #a5aec0
 }

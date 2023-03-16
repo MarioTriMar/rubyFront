@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../note.service';
 import { Note } from '../note';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-notes-management',
   templateUrl: './notes-management.component.html',
   styleUrls: ['./notes-management.component.css']
 })
+
 export class NotesManagementComponent implements OnInit {
 
   notes: Note[];
 
-  constructor(private noteService:NoteService) { }
+  constructor(private noteService:NoteService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllNotes()
@@ -36,5 +39,8 @@ export class NotesManagementComponent implements OnInit {
   }
   show(){
     alert("esta")
+  }
+  createNote() {
+    this.router.navigate(['/home']);
   }
 }

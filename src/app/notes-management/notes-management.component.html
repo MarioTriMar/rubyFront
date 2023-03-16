@@ -1,29 +1,28 @@
 <div class="d-flex" id="content-wrapper">
     <div id="page-content-wrapper" class="w-100 bg-light-blue">
         <app-head-nav></app-head-nav>
-    <div class="row" style="background-color:floralwhite; height: 100%;">
+    <div class="row" style="background-color:#f0f0f0; height: 100%;">
         <div class="btn-center">
-            <button class="btn btn-success" >Add note</button>
+            <button class="btn btn-success"(click)="createNote()" >Add note</button>
         </div>
         
         <div class="col-lg-4 row-cards" *ngFor="let note of notes">
-            <div class="card text-center" (click)="show()" >
-                <div class="card-header">
-                    {{note.tag}}
-                </div>
-                <div class="card-body" style="height: 320px;">
-                    <h5 class="card-title">{{note.title}}</h5>
-                    <p id="text-mitad" class="card-text">{{note.text.substring(0,60)}}.....</p>  
-                    <img class="img-card" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/los-mejores-restaurantes-que-tienes-que-probar-en-madrid-1644914076.jpeg">
-                    <p class="card-text" style="font-size: 11px; ">Autor: {{note.idUser}}</p>
-                </div>
-                <div class="card-footer text-muted" style="display: flex;">
-                    <div style="width: 100%;">
-                       Created at:  {{note.created_at.toString().substring(0,10)}}
-                       <br>
-                       Last update at: {{note.updated_at.toString().substring(0,10)}}
+            <div class="col-md-9">
+                <div class="card p-3 mb-2">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                            <img class="img-card" src="https://assets.stickpng.com/images/584a9b47b080d7616d298778.png">
+                            <div class="ms-2 c-details">
+                                <h6 class="mb-0">{{note.idUser}}</h6> <span>{{note.created_at.toString().substring(0,10)}}</span>
+                            </div>
+                        </div>
+                        <div class="badge"> <span>{{note.tag}}</span> </div>
                     </div>
-    
+                    <div class="mt-5">
+                        <h3 class="heading">{{note.title}}</h3>
+                        <p>{{note.text.substring(0,25)}}.....</p>
+
+                    </div>
                 </div>
             </div>
         </div>
