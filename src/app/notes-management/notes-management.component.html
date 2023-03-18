@@ -7,10 +7,10 @@
         </div>
         <div class="col-lg-4 row-cards" *ngFor="let note of notes">
             <div class="col-md-11" style="margin: auto;">
-                <div class="card p-3 mb-2">
+                <div class="card p-3 mb-2" style="max-height: 450px;">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
-                            <img class="img-card" src="https://assets.stickpng.com/images/584a9b47b080d7616d298778.png">
+                            <img class="img-card" src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png">
                             <div class="ms-2 c-details">
                                 <h6 class="mb-0">{{note.idUser}}</h6> <span>{{note.created_at.toString().substring(0,10)}}</span>
                             </div>                            </div>
@@ -19,7 +19,7 @@
                     <div class="mt-5">
                         <h3 class="heading">{{note.title}}</h3>
                         <p>{{note.text.substring(0,25)}}.....</p>
-                        <img style="width: 60%"src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Restaurant_in_The_Mus%C3%A9e_d%27Orsay.jpg">
+                        <img style="width: 90%;"src={{note.image}}>
                     </div>
                 </div>
             </div>
