@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NoteService {
+  
 
   private baseURL = "http://localhost:3000/api/"
   constructor(private httpClient:HttpClient) { }
@@ -21,5 +22,13 @@ export class NoteService {
   saveNote(note:Note):Observable<any>{
     return this.httpClient.post(this.baseURL+"add_note",note)
   }
-
+  getNoteById(id: string) {
+    console.log(id)
+    return this.httpClient.get<Note>(this.baseURL+"get_noteById?_id="+id);
+  }
+  updateNote(note: Note):Observable<any> {
+    console.log(note._id.$oid)
+    return this.httpClient.put(this.baseURL+"update_note?_id="+note._id.$oid, note)
+  }
+  
 }

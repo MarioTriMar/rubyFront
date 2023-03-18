@@ -6,7 +6,7 @@
             <button class="btn btn-success"(click)="createNote()" >Add note</button>
         </div>
         <div class="col-lg-4 row-cards" *ngFor="let note of notes">
-            <div class="col-md-11" style="margin: auto;">
+            <div class="col-md-11" style="margin: auto;" (click)="showNote(note)">
                 <div class="card p-3 mb-2" style="max-height: 450px;">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">

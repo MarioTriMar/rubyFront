@@ -1,5 +1,5 @@
 export class Note {
-    _id: string;
+    _id: any;
     title: string;
     text: string;
     tag: string;

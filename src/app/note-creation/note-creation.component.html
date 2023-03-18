@@ -45,8 +45,15 @@
                                             <div class="row justify-content-center mb-5">
                                                 <div class="col-lg-4 col-auto ">
                                                     <button type="button" class="btn btn-primary btn-block">
-                                                        <small class="font-weight-bold" (click)="createNote()">Save Note</small>
+                                                        <small class="font-weight-bold" *ngIf="creation" (click)="createNote()">Save Note</small>
+                                                        <small class="font-weight-bold" *ngIf="!creation" (click)="updateNote()">Update Note</small>
+                                                        
                                                     </button> 
+                                                    <button type="button" class="btn btn-danger btn-block">
+                                                        <small class="font-weight-bold" *ngIf="!creation" (click)="deleteNote()">Delete Note</small>
+                                                        
+                                                    </button> 
+                                                    
                                                 </div>
                                             </div>
                                             <em>* indicates that is a required field</em>

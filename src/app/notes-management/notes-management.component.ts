@@ -41,6 +41,12 @@ export class NotesManagementComponent implements OnInit {
     alert("esta")
   }
   createNote() {
-    this.router.navigate(['/noteCreation']);
+    sessionStorage.setItem("type", "Creation")
+    this.router.navigate(['/noteCreation'])
+  }
+  showNote(note:Note){
+    sessionStorage.setItem("type", "Update")
+    sessionStorage.setItem("idNote", note._id.$oid)
+    this.router.navigate(['/noteCreation'])
   }
 }
