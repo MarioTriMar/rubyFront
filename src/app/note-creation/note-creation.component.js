@@ -1,11 +1,8 @@
 $(document).ready(function(){
+    $(".files").attr('data-before',"Drag file here or click the above button");
+    $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name; 
+        $(".files").attr('data-before',fileName);
     
-    var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
-       removeItemButton: true,
-       maxItemCount:5,
-       searchResultLimit:5,
-       renderChoiceLimit:5
-     }); 
-    
-    
+    });
 });

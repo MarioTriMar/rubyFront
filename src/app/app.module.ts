@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NotesManagementComponent } from './notes-management/notes-management.component';
 import { HeadNavComponent } from './head-nav/head-nav.component';
 import { NoteCreationComponent } from './note-creation/note-creation.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NoteCreationComponent } from './note-creation/note-creation.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

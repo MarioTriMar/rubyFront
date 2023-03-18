@@ -3,48 +3,53 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container contact-form">
-            <div class="contact-image">
-                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
-            </div>
-            <form method="post">
-                <h3>Create new Note</h3>
-               <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="txtTitle" class="form-control" placeholder="Title *" value="" />
-                        </div>
-                        <script src="note-creation.component.js"></script>
-                        <div class="row d-flex justify-content-center mt-100">
-                            <div class="col-md-6"> <select id="choices-multiple-remove-button" placeholder="Select upto 5 tags" multiple>
-                                    <option value="HTML">HTML</option>
-                                    <option value="Jquery">Jquery</option>
-                                    <option value="CSS">CSS</option>
-                                    <option value="Bootstrap 3">Bootstrap 3</option>
-                                    <option value="Bootstrap 4">Bootstrap 4</option>
-                                    <option value="Java">Java</option>
-                                    <option value="Javascript">Javascript</option>
-                                    <option value="Angular">Angular</option>
-                                    <option value="Python">Python</option>
-                                    <option value="Hybris">Hybris</option>
-                                    <option value="SQL">SQL</option>
-                                    <option value="NOSQL">NOSQL</option>
-                                    <option value="NodeJS">NodeJS</option>
-                                </select> </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
-                        </div>
+            <div class="container card-0 justify-content-center ">
+                <div class="card-body px-sm-4 px-0">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-10 col"><h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">Create New Note</h3></div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                    <div class="row justify-content-center round">
+                        <div class="col-lg-10 col-md-12 ">
+                            <div class="card shadow-lg card-1">
+                                <div class="card-body inner-card">
+                                    <div class="row justify-content-left">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="form-group"><label for="first-name">Note Title</label>
+                                                    <input type="text" [(ngModel)]="note.title" class="form-control" id="note-title" placeholder="Note title here"> </div>
+                                                <div class="form-group"> <label for="tag">Tag</label>
+                                                    <select class="form-control"> 
+                                                        <option>Shopping</option>
+                                                        <option>Work</option> 
+                                                        <option>Diary</option> 
+                                                        <option>Other</option> 
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="col-md-12 col-lg-12 col-12"> 
+                                                    <div class="form-group files">
+                                                        <label class="my-auto">Subir Imagen </label> 
+                                                        <input id="file" type="file" class="form-control" />
+                                                    </div>
+                                                </div>
+                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 col-lg-10 col-12"><div class="form-group"> <label for="exampleFormControlTextarea2">Message</label> <textarea class="my-textarea" id="message" rows="5"></textarea></div>
+                                        <div class="row justify-content-center mb-5">
+                                                <div class="col-lg-4 col-auto ">
+                                                    <button type="button" class="btn btn-primary btn-block">
+                                                        <small class="font-weight-bold">Request a Quote</small>
+                                                    </button> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </form>
-</div>
+            </div>
