@@ -41,6 +41,6 @@ export class NotesManagementComponent implements OnInit {
     alert("esta")
   }
   createNote() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/noteCreation']);
   }
 }

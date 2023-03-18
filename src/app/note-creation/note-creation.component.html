@@ -1,1 +1,50 @@
-<p>note-creation works!</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+            <form method="post">
+                <h3>Create new Note</h3>
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtTitle" class="form-control" placeholder="Title *" value="" />
+                        </div>
+                        <script src="note-creation.component.js"></script>
+                        <div class="row d-flex justify-content-center mt-100">
+                            <div class="col-md-6"> <select id="choices-multiple-remove-button" placeholder="Select upto 5 tags" multiple>
+                                    <option value="HTML">HTML</option>
+                                    <option value="Jquery">Jquery</option>
+                                    <option value="CSS">CSS</option>
+                                    <option value="Bootstrap 3">Bootstrap 3</option>
+                                    <option value="Bootstrap 4">Bootstrap 4</option>
+                                    <option value="Java">Java</option>
+                                    <option value="Javascript">Javascript</option>
+                                    <option value="Angular">Angular</option>
+                                    <option value="Python">Python</option>
+                                    <option value="Hybris">Hybris</option>
+                                    <option value="SQL">SQL</option>
+                                    <option value="NOSQL">NOSQL</option>
+                                    <option value="NodeJS">NodeJS</option>
+                                </select> </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+</div>
