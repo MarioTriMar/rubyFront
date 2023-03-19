@@ -74,7 +74,12 @@ export class NoteCreationComponent implements OnInit {
   }
 
   deleteNote(){
-    
+    console.log(this.note._id.$oid)
+    this.noteService.deleteNote(this.note).subscribe(data=>{
+      this.router.navigate(['/noteManagement']);
+    }, (error)=>{
+      console.log(error);
+    }) 
   }
 }
 

@@ -14,9 +14,9 @@ export class NoteService {
   getAllNotes(){
     return this.httpClient.get<Note[]>(this.baseURL+"get_allNotes");
   }
-  deleteNote(id:any){
-    console.log(id.$oid)
-    return this.httpClient.delete(this.baseURL+"delete_note?_id=" +id.$oid
+  deleteNote(note: Note){
+    console.log(note._id.$oid)
+    return this.httpClient.delete(this.baseURL+"delete_note?_id=" +note._id.$oid
     )
   }
   saveNote(note:Note):Observable<any>{
