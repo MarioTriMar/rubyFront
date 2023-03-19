@@ -49,8 +49,8 @@
                                                         <small class="font-weight-bold" *ngIf="!creation" (click)="updateNote()">Update Note</small>
                                                         
                                                     </button> 
-                                                    <button type="button" class="btn btn-danger btn-block">
-                                                        <small class="font-weight-bold" *ngIf="!creation" (click)="deleteNote()">Delete Note</small>
+                                                    <button  *ngIf="!creation" type="button" class="btn btn-danger btn-block">
+                                                        <small class="font-weight-bold"(click)="deleteNote()">Delete Note</small>
                                                         
                                                     </button> 
                                                     
