@@ -1,0 +1,68 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+            <div class="container card-0 justify-content-center ">
+                <div class="card-body px-sm-4 px-0">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-10 col"><h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">Create New Note</h3></div>
+                    </div>
+                    <div class="row justify-content-center round">
+                        <div class="col-lg-10 col-md-12 ">
+                            <div class="card shadow-lg card-1">
+                                <div class="card-body inner-card">
+                                    <div class="row justify-content-left">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="form-group"><label for="first-name">Note Title*</label>
+                                                    <input type="text" [(ngModel)]="note.title" class="form-control" id="note-title" placeholder="Note title here"> </div>
+                                                <div class="form-group"> <label for="tag">Tag</label>
+                                                    <select class="form-control" [(ngModel)]="note.tag"> 
+                                                        <option value="Shopping">Shopping</option>
+                                                        <option value="Work">Work</option> 
+                                                        <option value="Diary"  selected>Diary</option> 
+                                                        <option value="Other">Other</option> 
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="col-md-12 col-lg-12 col-12"> 
+                                                    <div class="form-group">
+                                                        <label class="my-auto">URL image</label> 
+                                                        <input id="url" type="text" class="form-control" [(ngModel)]="note.image"/>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 col-lg-10 col-12">
+                                            <div class="form-group"> 
+                                                <label for="exampleFormControlTextarea2">Message*</label> 
+                                                <input class="my-textarea"type="text" [(ngModel)]="note.text" id="message" rows="5"/>
+                                            </div>
+                                            <div class="row justify-content-center mb-5">
+                                                <div class="col-lg-4 col-auto ">
+                                                    <button type="button" class="btn btn-primary btn-block">
+                                                        <small class="font-weight-bold" *ngIf="creation" (click)="createNote()">Save Note</small>
+                                                        <small class="font-weight-bold" *ngIf="!creation" (click)="updateNote()">Update Note</small>
+                                                        
+                                                    </button> 
+                                                    <button  *ngIf="!creation" type="button" class="btn btn-danger btn-block">
+                                                        <small class="font-weight-bold"(click)="deleteNote()">Delete Note</small>
+                                                        
+                                                    </button> 
+                                                    
+                                                </div>
+                                            </div>
+                                            <em>* indicates that is a required field</em>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
