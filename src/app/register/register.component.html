@@ -22,22 +22,22 @@
                         <form method="POST" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input style="background-color:#f0fff8" type="text" name="name" id="name" placeholder="Your Username"/>
+                                <input [(ngModel)]="user.username" style="background-color:#f0fff8" type="text" name="name" id="name" placeholder="Your Username"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input style="background-color:#f0fff8" type="email" name="email" id="email" placeholder="Your Email"/>
+                                <input [(ngModel)]="user.email" style="background-color:#f0fff8" type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input style="background-color:#f0fff8" type="password" name="pass" id="pass" placeholder="Password"/>
+                                <input [(ngModel)]="user.password" style="background-color:#f0fff8" type="password" name="pass" id="pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input style="background-color:#f0fff8" type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                                <input [(ngModel)]="user.password2" style="background-color:#f0fff8" type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                                <input (click)="register()" type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                             </div>
                         </form>
                     </div>
