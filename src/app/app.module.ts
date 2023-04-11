@@ -9,6 +9,7 @@ import { NotesManagementComponent } from './notes-management/notes-management.co
 import { HeadNavComponent } from './head-nav/head-nav.component';
 import { NoteCreationComponent } from './note-creation/note-creation.component';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     NotesManagementComponent,
     HeadNavComponent,
-    NoteCreationComponent
+    NoteCreationComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

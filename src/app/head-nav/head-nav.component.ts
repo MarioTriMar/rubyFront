@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-head-nav',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./head-nav.component.css']
 })
 export class HeadNavComponent implements OnInit {
-  
-  constructor() { }
+  username: string
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+    this.username=localStorage.getItem("username")!
   }
-
+  logout(){
+    localStorage.setItem("idUser","")
+    localStorage.setItem("username","")
+    this.router.navigate(["/home"])
+  }
 }

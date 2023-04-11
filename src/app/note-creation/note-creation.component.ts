@@ -21,7 +21,7 @@ export class NoteCreationComponent implements OnInit {
     if(sessionStorage.getItem("type")=="Creation"){
       this.creation=true;
       this.note.tag="Diary"
-      this.note.idUser="Messi"
+      
     }else if(sessionStorage.getItem("type")=="Update") {
       this.creation=false;
       this.loadNote(sessionStorage.getItem("idNote")!)
@@ -47,6 +47,7 @@ export class NoteCreationComponent implements OnInit {
       valido=false
     }
     if(valido){
+      this.note.idUser=localStorage.getItem("username")!
       this.noteService.saveNote(this.note).subscribe(data=>{
         this.router.navigate(['/noteManagement']);
       }, (error)=>{
