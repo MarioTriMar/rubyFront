@@ -13,13 +13,21 @@ import { Router } from '@angular/router';
 export class NotesManagementComponent implements OnInit {
 
   notes: Note[];
-
+  
   constructor(private noteService:NoteService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getAllNotes()
-  }
 
+    this.getAllNotesByUserId()
+  }
+  getAllNotesByUserId(){
+    this.noteService.getAllNotesByUserId(localStorage.getItem("username")!).subscribe(data=>{
+      console.log(data)
+      this.notes=data
+    },error =>{
+      console.log(error)
+    })
+  }
   getAllNotes(){
     this.noteService.getAllNotes().subscribe(data=>{
       console.log(data)
