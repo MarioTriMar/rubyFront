@@ -1,0 +1,87 @@
+<div class="d-flex" id="content-wrapper">
+    <div id="sidebar-container" class="border-right sidebar-container">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div id="page-content-wrapper" class="w-100 bg-light-blue">
+      <app-head-nav> </app-head-nav>
+      <div class="container bg-light" style=" background-size: cover;">
+        <div class="row">
+          <h3 style="text-align:center; margin-top:20px; margin-bottom:20px;">Consultar Usuarios</h3>
+          <div class="col-sm-8">
+            <div class="div-usuarios-lista">
+              <select #currentPageLength name="page" id="page" (change)="pageLengthChange(currentPageLength.value)">
+                <option [value]="usuario" *ngFor="let usuario of pagelength">
+                  {{ usuario }}
+                </option>
+              </select>
+              <table id="table" class="table table-hover">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                </tr>
+                <tr (click)="loadUser(user)" *ngFor="let user of displayData" >
+                  <td>{{user.username}}</td>
+                  <td>{{user.email}}</td>
+                  
+                </tr>
+              </table>
+              <span>
+                <button (click)="PrevPage()" style="margin-right:5px">Prev</button>
+                <span *ngFor="let usuario of pageArray">
+                  <button #pageNo [ngStyle]="{
+                            background: page == usuario ? 'blue' : '',
+                            color: page == usuario ? 'white' : ''
+                          }" (click)="goToPage(pageNo.innerHTML)">
+                    {{ usuario }}
+                  </button>
+                </span>
+                <button (click)="nextPage()" style="margin-left:5px">Next</button>
+                <span>Total pages:{{ totalPages }}</span>
+              </span>
+            </div>
+  
+          </div>
+          <div class="col-sm-4">
+  
+            <form>
+              <div class="form-group">
+                <label>Username : </label>
+                <input type="text" class="form-control" id="nombre" 
+                  name="nombre" [(ngModel)]="user.username">
+              </div>
+  
+              <div class="form-group">
+                <label>Email : </label>
+                <input type="text" class="form-control" id="email" 
+                  name="email" [(ngModel)]="user.email">
+              </div>
+  
+              <div class="form-group">
+                <label>Phone number : </label>
+                <input type="text" class="form-control" id="phone" 
+                  name="phone" [(ngModel)]="user.phone">
+              </div>
+  
+              <div class="form-group">
+                <label>Type : </label>
+                
+                    <select class="form-control" [(ngModel)]="user.type" [ngModelOptions]="{standalone: true}"> 
+                        <option value="user">user</option>
+                        <option value="admin">admin</option> 
+                    </select>
+                
+                
+              </div>
+  
+              <button [disabled]="state" class="btn btn-warning" (click)="updateUser(user)">Actualizar</button>
+  
+             
+  
+            </form>
+          </div>
+        </div>
+  
+        
+      </div>
+    </div>
+  </div>

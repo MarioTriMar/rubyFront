@@ -10,6 +10,8 @@ import { HeadNavComponent } from './head-nav/head-nav.component';
 import { NoteCreationComponent } from './note-creation/note-creation.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { UsersManagementComponent } from './users-management/users-management.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RegisterComponent } from './register/register.component';
     NotesManagementComponent,
     HeadNavComponent,
     NoteCreationComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    UsersManagementComponent
   ],
   imports: [
     BrowserModule,

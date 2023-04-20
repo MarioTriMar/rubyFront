@@ -25,6 +25,10 @@ export class RegisterComponent implements OnInit {
       alert("Email is required")
       valido=false
     }
+    if(this.user.phone==undefined || this.user.phone==""){
+      alert("Phone number is required")
+      valido=false
+    }
     if(this.user.password==undefined || this.user.password==""){
       alert("Password are required")
       valido=false
