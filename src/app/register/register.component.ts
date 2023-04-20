@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
       valido=false
     }
     if(valido){
+      this.user.type="user"
       this.userService.addUser(this.user).subscribe(data=>{
         alert("User registered")
         this.router.navigate(['/home']);
