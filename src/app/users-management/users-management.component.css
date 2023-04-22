@@ -1,0 +1,12 @@
+.sidebar-container{
+    background-color: rgb(181, 181, 181); 
+    min-height: 100vh;
+}
+@media (min-width: 768px) {
+#sidebar-container {
+    margin-left: 0;
+}
+#content-wrapper.toggled #sidebar-container {
+    margin-left: -18rem;
+}
+}

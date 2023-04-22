@@ -11,14 +11,20 @@ import { Router } from '@angular/router';
 })
 
 export class NotesManagementComponent implements OnInit {
-
+  tipoUsuario = localStorage.getItem('tokenSessionTipo')!; //Esta variable contiene el tipo de usuario logeado y segun lo que contenga le mostrara distintas opciones de funcionalidad en la sidebar
+  isadmin: boolean;
   notes: Note[];
   
   constructor(private noteService:NoteService, private router: Router) { }
 
   ngOnInit(): void {
-
-    this.getAllNotesByUserId()
+    if (this.tipoUsuario=="user"){
+      this.getAllNotesByUserId()
+    }else{
+      this.isadmin=true
+      this.getAllNotes()
+    }
+      
   }
   getAllNotesByUserId(){
     this.noteService.getAllNotesByUserId(localStorage.getItem("username")!).subscribe(data=>{

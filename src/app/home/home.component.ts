@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     this.userService.login(this.email, this.password).subscribe(data=>{
       localStorage.setItem("idUser", data._id)
       localStorage.setItem("username", data.username)
+      localStorage.setItem("tokenSessionTipo", data.type)
       this.router.navigate(['/noteManagement']);
     }, (error)=>{
       alert(error.error.msg)

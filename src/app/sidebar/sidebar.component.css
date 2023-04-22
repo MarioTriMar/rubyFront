@@ -1,0 +1,29 @@
+.menu {
+    width: 18rem;
+    
+}
+
+#sidebar-container .logo{
+    padding: 0.875rem 1.25rem;
+}
+
+  
+#sidebar-container .menu {
+    width: 100%;
+}
+
+.opciones{
+    background-color: rgb(181, 181, 181); 
+}
+
+i{
+    margin-right: 5px;
+}
+
+.opciones:hover{
+    background-color: rgb(181, 181, 181); 
+}
+
+*{
+    color: #6a0033;
+}
