@@ -11,6 +11,7 @@ export class NoteService {
   private baseURL = "http://localhost:3000/api/"
   constructor(private httpClient:HttpClient) { }
   getAllNotesByUserId(idUser:string) {
+    console.log(this.baseURL+"get_allNotesByUserId?idUser="+idUser)
     return this.httpClient.get<Note[]>(this.baseURL+"get_allNotesByUserId?idUser="+idUser);
   }
   

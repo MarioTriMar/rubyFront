@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
   login(){
     this.userService.login(this.email, this.password).subscribe(data=>{
-      localStorage.setItem("idUser", data._id)
+      localStorage.setItem("idUser", data._id.$oid)
       localStorage.setItem("username", data.username)
       localStorage.setItem("tokenSessionTipo", data.type)
       this.router.navigate(['/noteManagement']);

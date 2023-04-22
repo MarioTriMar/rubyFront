@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UsersManagementComponent } from './users-management/users-management.component';
+import { UsersFriendshipComponent } from './users-friendship/users-friendship.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UsersManagementComponent } from './users-management/users-management.co
     NoteCreationComponent,
     RegisterComponent,
     SidebarComponent,
-    UsersManagementComponent
+    UsersManagementComponent,
+    UsersFriendshipComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

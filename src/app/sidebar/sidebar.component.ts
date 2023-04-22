@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+
   tipoUsuario = localStorage.getItem('tokenSessionTipo')!; //Esta variable contiene el tipo de usuario logeado y segun lo que contenga le mostrara distintas opciones de funcionalidad en la sidebar
 
   constructor(private router:Router) { }
@@ -18,5 +19,8 @@ export class SidebarComponent implements OnInit {
   }
   gestionUsuarios(){
     this.router.navigate(["/usersManagement"])
+  }
+  usersFriendship() {
+    this.router.navigate(["/usersFriendship"])
   }
 }

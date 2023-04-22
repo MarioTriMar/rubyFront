@@ -5,6 +5,8 @@ import { NotesManagementComponent } from './notes-management/notes-management.co
 import { NoteCreationComponent } from './note-creation/note-creation.component';  
 import { RegisterComponent } from './register/register.component';
 import { UsersManagementComponent } from './users-management/users-management.component';
+import { UsersFriendshipComponent } from './users-friendship/users-friendship.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path : 'noteManagement',component:NotesManagementComponent},
@@ -12,7 +14,9 @@ const routes: Routes = [
   {path : 'home',component:HomeComponent},
   {path: 'noteCreation',component:NoteCreationComponent},
   {path: 'register',component:RegisterComponent},
-  {path: 'usersManagement', component:UsersManagementComponent}
+  {path: 'usersManagement', component:UsersManagementComponent},
+  {path: 'usersFriendship', component:UsersFriendshipComponent},
+  {path: 'userProfile', component:UserProfileComponent}
 ];
 
 @NgModule({
