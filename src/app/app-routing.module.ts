@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersManagementComponent } from './users-management/users-management.component';
 import { UsersFriendshipComponent } from './users-friendship/users-friendship.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FriendshipsRequestsComponent } from './friendships-requests/friendships-requests.component';
 
 const routes: Routes = [
   {path : 'noteManagement',component:NotesManagementComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'register',component:RegisterComponent},
   {path: 'usersManagement', component:UsersManagementComponent},
   {path: 'usersFriendship', component:UsersFriendshipComponent},
-  {path: 'userProfile', component:UserProfileComponent}
+  {path: 'userProfile', component:UserProfileComponent},
+  {path: 'friendshipsRequests', component:FriendshipsRequestsComponent}
 ];
 
 @NgModule({

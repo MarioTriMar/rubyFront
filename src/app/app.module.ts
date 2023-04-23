@@ -14,6 +14,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { UsersManagementComponent } from './users-management/users-management.component';
 import { UsersFriendshipComponent } from './users-friendship/users-friendship.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FriendshipsRequestsComponent } from './friendships-requests/friendships-requests.component';
+import { FriendsComponent } from './friends/friends.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     SidebarComponent,
     UsersManagementComponent,
     UsersFriendshipComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FriendshipsRequestsComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,

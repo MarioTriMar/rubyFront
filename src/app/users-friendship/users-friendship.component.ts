@@ -21,16 +21,20 @@ export class UsersFriendshipComponent implements OnInit {
   getAllUsers(){
     this.usersService.getAllUsers().subscribe(data=>{
       
-      console.log(data)
       this.users=data
     },error =>{
       console.log(error)
     })
   }
   userProfile(user:User) {
+    this.usersService.getHasFriendshipRequest(localStorage.getItem("idUser")!,user._id.$oid).subscribe(data=>{
+      localStorage.setItem("profileType", data.message)
+      localStorage.setItem("userProfile", user._id.$oid)
+      this.router.navigate(["/userProfile"])
+    },error=>{
+      console.log(error)
+    })
     
-    localStorage.setItem("userProfile", user._id.$oid)
-    this.router.navigate(["/userProfile"])
   }
   searchUser(){
     this.usersService.getUsersContaining(this.username).subscribe(data=>{
