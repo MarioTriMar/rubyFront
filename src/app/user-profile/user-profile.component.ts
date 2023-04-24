@@ -22,12 +22,11 @@ export class UserProfileComponent implements OnInit {
   notes: Note[];
   ngOnInit(): void {
     this.loadUser()
+    console.log(localStorage.getItem("profileType"))
     if (localStorage.getItem("profileType")=="applicant"){
       //si me ha enviado la solicitud
       this.hasRequested=true
       this.areFriends=false
-      
-
     }else if(localStorage.getItem("profileType")=="friends"){
       //si ya somos amigos
       this.hasRequested=false
@@ -36,6 +35,9 @@ export class UserProfileComponent implements OnInit {
       //si he enviado yo la solicitud
       this.hasRequested=true
       this.areFriends=true
+    }else{
+      this.hasRequested=false
+      this.areFriends=false
     }
     
   }
@@ -49,7 +51,10 @@ export class UserProfileComponent implements OnInit {
       this.friendship.userA=localStorage.getItem("idUser")!
       this.friendship.userB=this.user._id.$oid
       this.friendship.state=false
-      this.getRequest(localStorage.getItem("idUser")!,this.user._id.$oid)
+      if(localStorage.getItem("profileType")=="applicant"){
+        this.getRequest(localStorage.getItem("idUser")!,this.user._id.$oid)
+      }
+      
       this.getAllNotesByUserId(this.user.username)
     },error =>{
       console.log(error)
