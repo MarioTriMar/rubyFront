@@ -4,16 +4,24 @@
         <h4 class="font-weight-bold mb-0">CherryNotes</h4>
     </div>
     <div class="menu">
-        <a 
+        <a  (click)="gestionNotas()"
             class="list-group-item list-group-item-action text-muted  p-3 border-0 opciones"><i
                 class="icon ion-md-apps lead mr-2"></i> Own notes</a>
-        <a 
+        <a  
             class="list-group-item list-group-item-action text-muted  p-3 border-0 opciones"><i
                 class="icon ion-md-people lead mr-2"></i> Shared notes</a>
+        
         <a 
             class="list-group-item list-group-item-action text-muted  p-3 border-0 opciones"><i
-                class="icon ion-md-people lead mr-2"></i> Friendships </a>        
-            
+                class="icon ion-md-people lead mr-2"></i> My friends </a>
+        
+        <a (click)="usersFriendship()"
+            class="list-group-item list-group-item-action text-muted  p-3 border-0 opciones"><i
+                class="icon ion-md-people lead mr-2"></i> Search friends </a>        
+                
+        <a (click)="friendshipRequests()"
+            class="list-group-item list-group-item-action text-muted  p-3 border-0 opciones"><i
+                class="icon ion-md-people lead mr-2"></i>  Friendships requests </a>    
     </div>
 </div>
 

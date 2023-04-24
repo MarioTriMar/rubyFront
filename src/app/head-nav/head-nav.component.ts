@@ -14,8 +14,7 @@ export class HeadNavComponent implements OnInit {
     this.username=localStorage.getItem("username")!
   }
   logout(){
-    localStorage.setItem("idUser","")
-    localStorage.setItem("username","")
+    localStorage.clear();
     this.router.navigate(["/home"])
   }
 }
