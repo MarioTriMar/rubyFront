@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
 
+
   tipoUsuario = localStorage.getItem('tokenSessionTipo')!; //Esta variable contiene el tipo de usuario logeado y segun lo que contenga le mostrara distintas opciones de funcionalidad en la sidebar
 
   constructor(private router:Router) { }
@@ -28,5 +29,11 @@ export class SidebarComponent implements OnInit {
   friendshipRequests() {
     localStorage.setItem("profileType", "")
     this.router.navigate(['/friendshipsRequests'])
+  }
+  friends(){
+    this.router.navigate(['/friends'])
+  }
+  noteRequest() {
+    this.router.navigate(['/noteRequests'])
   }
 }

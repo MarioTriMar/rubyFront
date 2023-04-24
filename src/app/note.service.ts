@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Note } from './note';
 import { Observable } from 'rxjs';
+import { SharedNote } from './shared-note';
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
+  
+  
   
 
   private baseURL = "http://localhost:3000/api/"
@@ -33,6 +36,19 @@ export class NoteService {
   updateNote(note: Note):Observable<any> {
     console.log(note._id.$oid)
     return this.httpClient.put(this.baseURL+"update_note?_id="+note._id.$oid, note)
+  }
+  shareNote(sharedNote:SharedNote):Observable<any> {
+    console.log("llega")
+    return this.httpClient.post(this.baseURL+"create_noteRequest", sharedNote)
+  }
+  getAllNoteRequests(userId: string) {
+    return this.httpClient.get<any>(this.baseURL+"get_sharedNoteRequests?userId="+userId);
+  }
+  acceptRequest(requestId: string) {
+    return this.httpClient.put(this.baseURL+"accept_noteRequest?requestId="+requestId,null)
+  }
+  rejectRequest(requestId: string) {
+    return this.httpClient.delete(this.baseURL+"reject_noteRequest?requestId="+requestId)
   }
   
 }

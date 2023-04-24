@@ -1,0 +1,15 @@
+<h3 style="text-align:center; margin-top: 20px;">Select friend to share</h3>
+<button (click)="shareNote()" class="btn btn-success" style="margin: auto; display: flex; margin-top: 20px;" [disabled]="!this.state">Share note with {{this.userSelected.username}}</button>
+    <div class="row" style="height: 100%; margin-left: 0px; margin-top: 90px;">
+        <div class="col-lg-4 row-cards"  *ngFor="let user of users">
+        <div (click)="selectFriend(user)" class="card" style="width: 18rem; margin: auto;">
+            <img class="card-img-top" src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-text" style="text-align: center;">{{user.username}}</h5>
+                
+            </div>
+            
+        </div>
+    </div>
+    </div>
+

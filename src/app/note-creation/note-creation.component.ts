@@ -15,18 +15,26 @@ export class NoteCreationComponent implements OnInit {
   opcionSeleccionado: string;
   verSeleccion: string;
   creation:boolean;
+  update: boolean;
   constructor(private noteService:NoteService, private router:Router) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem("type")=="Creation"){
       this.creation=true;
+      this.update=false;
       this.note.tag="Diary"
       
     }else if(sessionStorage.getItem("type")=="Update") {
       this.creation=false;
+      this.update=true;
       this.loadNote(sessionStorage.getItem("idNote")!)
       console.log(this.note)
-    } 
+    }else{
+      console.log(sessionStorage.getItem("idNote")!)
+      this.creation=false
+      this.update=false
+      this.loadNote(sessionStorage.getItem("idNote")!)
+    }
     
   }
 
@@ -81,6 +89,11 @@ export class NoteCreationComponent implements OnInit {
     }, (error)=>{
       console.log(error);
     }) 
+  }
+  shareNote(){
+    console.log("click")
+    localStorage.setItem("idNote",this.note._id.$oid)
+    this.router.navigate(['/shareNote'])
   }
 }
 

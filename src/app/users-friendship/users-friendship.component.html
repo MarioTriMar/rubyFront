@@ -10,7 +10,7 @@
             <button (click)="searchUser()"style="margin-left: 10px;"class="btn btn-success" >Search user</button>
             <button *ngIf="this.state" (click)="allUsers()"style="margin-left: 10px;"class="btn btn-warning" >Show all</button>
         </div>
-        <div class="col-lg-4 row-cards" *ngFor="let user of users">
+        <div class="col-lg-4 row-cards" *ngFor="let user of users" style="flex-wrap: wrap;">
         <div (click)="userProfile(user)"class="card" style="width: 18rem; margin: auto;">
             <img class="card-img-top" src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" alt="Card image cap">
             <div class="card-body">

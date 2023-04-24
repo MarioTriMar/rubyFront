@@ -48,4 +48,7 @@ export class UserService {
   getFriendshipRequestOfUsers(userA:string, userB:string){
     return this.httpClient.get<any>(this.baseURL+"get_FriendshipRequestOfUsers?userA="+userA+"&userB="+userB);
   }
+  getAllFriends(userId:string){
+    return this.httpClient.get<User[]>(this.baseURL+"get_allFriends?_id="+userId);
+  }
 }

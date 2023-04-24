@@ -1,0 +1,36 @@
+<div class="d-flex" id="content-wrapper">
+    <div id="sidebar-container" class="border-right sidebar-container">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color:#f0f0f0;">
+      <app-head-nav> </app-head-nav>
+      <div class="row" style="background-color:#f0f0f0; height: 100%; margin-left: 0px;">
+        
+        <div  style="margin-top: 10px;"class="col-lg-4 row-cards" *ngFor="let request of noteRequests">
+            <div class="col-md-11" style="margin: auto;" >
+                <div class="card p-3 mb-2" style="max-height: 450px;">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                            <img class="img-card" src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png">
+                            <div class="ms-2 c-details">
+                                <h6 class="mb-0">{{request.note.idUser}}</h6> <span>{{request.note.created_at.toString().substring(0,10)}}</span>
+                            </div>                            </div>
+                        <div class="badge"> <span>{{request.note.tag}}</span> </div>
+                    </div>
+                    <div class="mt-5">
+                        <h3 class="heading">{{request.note.title}}</h3>
+                        <p>{{request.note.text.substring(0,25)}}.....</p>
+                        <img style="width: 90%;"src={{request.note.image}}>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; margin: auto; margin-top: 10px;">
+                        <button (click)="seeNote(request.note)" class="btn btn-primary" style="margin-right: 10px;">See note</button>
+                        <button (click)="acceptRequest(request)"class="btn btn-success" style="margin-right: 10px;">Accept</button>
+                        <button (click)="rejectRequest(request)" class="btn btn-danger">Reject</button>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

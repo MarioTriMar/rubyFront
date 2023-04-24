@@ -8,6 +8,9 @@ import { UsersManagementComponent } from './users-management/users-management.co
 import { UsersFriendshipComponent } from './users-friendship/users-friendship.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FriendshipsRequestsComponent } from './friendships-requests/friendships-requests.component';
+import { FriendsComponent } from './friends/friends.component';
+import { ShareNoteComponent } from './share-note/share-note.component';
+import { NoteRequestsComponent } from './note-requests/note-requests.component';
 
 const routes: Routes = [
   {path : 'noteManagement',component:NotesManagementComponent},
@@ -18,7 +21,10 @@ const routes: Routes = [
   {path: 'usersManagement', component:UsersManagementComponent},
   {path: 'usersFriendship', component:UsersFriendshipComponent},
   {path: 'userProfile', component:UserProfileComponent},
-  {path: 'friendshipsRequests', component:FriendshipsRequestsComponent}
+  {path: 'friendshipsRequests', component:FriendshipsRequestsComponent},
+  {path: 'friends', component:FriendsComponent},
+  {path: 'shareNote', component:ShareNoteComponent},
+  {path: 'noteRequests', component:NoteRequestsComponent}
 ];
 
 @NgModule({
