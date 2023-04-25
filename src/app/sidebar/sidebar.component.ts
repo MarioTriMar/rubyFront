@@ -36,4 +36,9 @@ export class SidebarComponent implements OnInit {
   noteRequest() {
     this.router.navigate(['/noteRequests'])
   }
+  logout(){
+    localStorage.clear();
+    sessionStorage.clear();
+    this.router.navigate(["/home"])
+  }
 }

@@ -18,6 +18,7 @@ import { FriendshipsRequestsComponent } from './friendships-requests/friendships
 import { FriendsComponent } from './friends/friends.component';
 import { ShareNoteComponent } from './share-note/share-note.component';
 import { NoteRequestsComponent } from './note-requests/note-requests.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NoteRequestsComponent } from './note-requests/note-requests.component';
     FriendshipsRequestsComponent,
     FriendsComponent,
     ShareNoteComponent,
-    NoteRequestsComponent
+    NoteRequestsComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
