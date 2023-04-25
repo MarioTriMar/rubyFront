@@ -10,6 +10,7 @@ export class SidebarComponent implements OnInit {
 
 
 
+
   tipoUsuario = localStorage.getItem('tokenSessionTipo')!; //Esta variable contiene el tipo de usuario logeado y segun lo que contenga le mostrara distintas opciones de funcionalidad en la sidebar
 
   constructor(private router:Router) { }
@@ -40,5 +41,8 @@ export class SidebarComponent implements OnInit {
     localStorage.clear();
     sessionStorage.clear();
     this.router.navigate(["/home"])
+  }
+  myProfile() {
+    this.router.navigate(['/myProfile'])
   }
 }
