@@ -26,7 +26,7 @@
                 JPG or PNG no larger than 5 MB
               </div>
               <!-- Profile picture upload button-->
-              <button class="btn btn-primary" type="button">
+              <button class="btn btn-primary" type="button" (onclick)="clear()">
                 Upload new image
               </button>
             </div>
@@ -87,7 +87,7 @@
                     value="username"
                   />
                 </div>
-                <button [hidden]="!state" class="btn btn-danger" onclick="clear()">Clean</button>
+                <button [hidden]="!state" class="btn btn-danger" (click)="clear()">Clean</button>
                 <!-- Save changes button-->
                 <button
                   (click)="updateUser()"
@@ -140,6 +140,15 @@
                   >
                     Update
                   </button>
+
+                  <button
+                  [hidden]="state"
+                  class="btn btn-warning"
+                  (click)="changeData()"
+                  style="margin-left: 5px;"
+                >
+                  Change data info
+                </button>
                 </form>
 
 

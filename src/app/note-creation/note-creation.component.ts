@@ -74,29 +74,7 @@ export class NoteCreationComponent implements OnInit {
       valido = false
     }
     if (valido) {
-      //this.saveNote()
       this.note.idUser = localStorage.getItem("username")!
-      /*
-            // Created the reader for parsing the image to base64
-            const reader = new FileReader();
-            reader.readAsDataURL(this.selectedFile);
-      
-            reader.onload = () => {
-              if (reader != null && reader.result != null) {
-                // Creating base64 chain
-                const base64String = reader.result.toString().split(',')[1];
-                console.log(base64String); // This is the Base64 string representation of the file
-                // attach the base64 chain to the note
-                this.note.image = base64String;
-                this.noteService.saveNote(this.note).subscribe(data => {
-                  this.router.navigate(['/noteManagement']);
-                }, (error) => {
-                  console.log(error);
-                })
-      
-              }
-            };
-      */
       this.noteService.saveNote(this.note).subscribe(data => {
         this.router.navigate(['/noteManagement']);
       }, (error) => {

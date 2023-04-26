@@ -19,6 +19,7 @@ export class MyProfileComponent implements OnInit {
     this.loadUser()
   }
   clear(){
+    
   }
   changePassword() {
     this.state=false
@@ -31,8 +32,8 @@ export class MyProfileComponent implements OnInit {
       this.user=data
       let dataAny:any
       dataAny=data
-      this.user.password=dataAny.password_digest
-      this.user.password2=dataAny.password_digest
+      this.user.password=""
+      this.user.password2=""
       
       console.log(this.user)
     },error=>{
