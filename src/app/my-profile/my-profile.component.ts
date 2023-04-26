@@ -18,6 +18,8 @@ export class MyProfileComponent implements OnInit {
     this.state=true
     this.loadUser()
   }
+  clear(){
+  }
   changePassword() {
     this.state=false
   }

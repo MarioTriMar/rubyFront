@@ -22,6 +22,12 @@ export class SidebarComponent implements OnInit {
   gestionUsuarios(){
     this.router.navigate(["/usersManagement"])
   }
+  gestionFriends(){
+    this.router.navigate([])
+  }
+  gestionCollections(){
+    this.router.navigate([])
+  }
   usersFriendship() {
     localStorage.setItem("profileType", "")
     this.router.navigate(["/usersFriendship"])
