@@ -1,244 +1,109 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CherryNotes</title>
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css'>
-<link rel='stylesheet' href='https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap'><link rel="stylesheet" href="./sidebar.component.css">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
 
-</head>
-<body>
-    <div *ngIf="this.tipoUsuario=='user'" class="layout has-sidebar fixed-sidebar fixed-header">
-            <aside id="sidebar" class="sidebar break-point-sm has-bg-image">
-              <div class="image-wrapper">
-                <img src="assets/images/sidebar-bg.jpg" alt="sidebar background" />
-              </div>
-              <div class="sidebar-layout">
-                <div class="sidebar-header">
-                  <div class="pro-sidebar-logo">
-                    <div>N</div>
-                    <h5>CherryNotes</h5>
-                  </div>
-                </div>
-                <div class="sidebar-content">
-                  <nav class="menu open-current-submenu">
-                    <ul>
-                      <li class="menu-header"><span> GENERAL </span></li>
-                      <li class="menu-item sub-menu">
-                        <a (click)="gestionNotas()">
-                          <span class="menu-icon">
-                            <i class="ri-vip-diamond-fill"></i>
-                          </span>
-                          <span class="menu-title">Notes</span>
-                          <span class="menu-suffix">
-                            <span class="badge primary">Hot</span>
-                          </span>
-                        </a>
-                        <div class="sub-menu-list">
-                          <ul>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">My Notes</span>
-                              </a>
-                            </li>
-                            <li class="menu-item">
-                              <a  (click)="gestionNotas()">
-                                <span class="menu-title">Add Note</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                      <li class="menu-item sub-menu">
-                        <a href="#">
-                          <span class="menu-icon">
-                            <i class="ri-bar-chart-2-fill"></i>
-                          </span>
-                          <span class="menu-title">Collections</span>
-                        </a>
-                        <div class="sub-menu-list">
-                          <ul>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">My Collections</span>
-                              </a>
-                            </li>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">Add Collection</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                      <li class="menu-item sub-menu">
-                        <a href="#">
-                          <span class="menu-icon">
-                            <i class="ri-shopping-cart-fill"></i>
-                          </span>
-                          <span class="menu-title">Friends</span>
-                        </a>
-                        <div class="sub-menu-list">
-                          <ul>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">My Friends</span>
-                              </a>
-                            </li>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">Add New Friend</span>
-                              </a>
-                            </li>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">See Requests</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                      <li class="menu-item sub-menu">
-                        <a href="#">
-                          <span class="menu-icon">
-                            <i class="ri-global-fill"></i>
-                          </span>
-                          <span class="menu-title">Shared Notes</span>
-                        </a>
-                        <div class="sub-menu-list">
-                          <ul>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">My Shared Notes</span>
-                              </a>
-                            </li>
-                            <li class="menu-item">
-                              <a href="#">
-                                <span class="menu-title">Share Note</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                      <li class="menu-header" style="padding-top: 20px"><span> EXTRA </span></li>
-                      <li class="menu-item">
-                        <a (click)="myProfile()">
-                          <span class="menu-icon">
-                            <i class="ri-book-2-fill"></i>
-                          </span>
-                          <span class="menu-title">My Profile</span>
-                          <span class="menu-suffix">
-                            <span class="badge secondary">Edit</span>
-                          </span>
-                        </a>
-                      </li>
-                      <li class="menu-item">
-                        <a (click)="logout()">
-                          <span class="menu-icon">
-                            <i class="ri-calendar-fill"></i>
-                          </span>
-                          <span class="menu-title">Exit</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </aside>
-            <div id="overlay" class="overlay"></div>
-          </div>
+<link
+  href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+  rel="stylesheet"
+/>
 
-    <div *ngIf="this.tipoUsuario=='admin'" class="layout has-sidebar fixed-sidebar fixed-header">
-        <aside id="sidebar" class="sidebar break-point-sm has-bg-image">
-          <div class="image-wrapper">
-            <img src="assets/images/sidebar-bg.jpg" alt="sidebar background" />
-          </div>
-          <div class="sidebar-layout">
-            <div class="sidebar-header">
-              <div class="pro-sidebar-logo">
-                <div>N</div>
-                <h5>CherryNotes</h5>
-              </div>
-            </div>
-            <div class="sidebar-content">
-              <nav class="menu open-current-submenu">
-                <ul>
-                  <li class="menu-header"><span> GENERAL </span></li>
-                  <li class="menu-item">
-                      <a href="#">
-                        <span class="menu-icon">
-                          <i class="ri-book-2-fill"></i>
-                        </span>
-                        <span class="menu-title">Notes Management</span>
-                      </a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="#">
-                        <span class="menu-icon">
-                          <i class="ri-book-2-fill"></i>
-                        </span>
-                        <span class="menu-title">Users Management</span>
-                      </a>
-                    </li>
-                    <li class="menu-item">
-                      <a href="#">
-                        <span class="menu-icon">
-                          <i class="ri-book-2-fill"></i>
-                        </span>
-                        <span class="menu-title">Collections Management</span>
-                      </a>
-                    </li>
-                  <li class="menu-item sub-menu">
-                    <a href="#">
-                      <span class="menu-icon">
-                        <i class="ri-global-fill"></i>
-                      </span>
-                      <span class="menu-title">Friendships Management</span>
-                    </a>
-                    <div class="sub-menu-list">
-                      <ul>
-                        <li class="menu-item">
-                          <a href="#">
-                            <span class="menu-title">Shared Friends</span>
-                          </a>
-                        </li>
-                        <li class="menu-item">
-                          <a href="#">
-                            <span class="menu-title">Shared Notes</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="menu-header" style="padding-top: 20px"><span> EXTRA </span></li>
-                  <li class="menu-item">
-                    <a href="#">
-                      <span class="menu-icon">
-                        <i class="ri-book-2-fill"></i>
-                      </span>
-                      <span class="menu-title">My Profile</span>
-                      <span class="menu-suffix">
-                        <span class="badge secondary">Edit</span>
-                      </span>
-                    </a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="#">
-                      <span class="menu-icon">
-                        <i class="ri-calendar-fill"></i>
-                      </span>
-                      <span class="menu-title">Exit</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </aside>
-        <div id="overlay" class="overlay"></div>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link rel="stylesheet" href="sidebar.component.css" />
+
+<div class="wrapper d-flex align-items-stretch" style="height: 100% !important;">
+  <nav id="sidebar">
+    <div class="p-4 pt-5">
+      <a
+        (click)="myProfile()"
+        class="img logo rounded-circle mb-5"
+        style="
+          background-image: url(https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png);
+        "
+      >
+      </a>
+
+      <h3
+        style="
+          font-weight: bold;
+          text-transform: uppercase;
+          color: white;
+          text-align: center;
+        "
+      >
+        {{ username }}
+      </h3>
+      <ul class="list-unstyled components mb-5">
+        <li>
+          <a
+            href="#homeNotes"
+            data-toggle="collapse"
+            aria-expanded="false"
+            class="dropdown-toggle"
+            >Notes</a
+          >
+          <ul class="collapse list-unstyled" id="homeNotes">
+            <li>
+              <a (click)="gestionNotas()">My notes</a>
+            </li>
+            <li>
+              <a>Shared notes</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a
+            href="#homeFriends"
+            data-toggle="collapse"
+            aria-expanded="false"
+            class="dropdown-toggle"
+            >Friends</a
+          >
+          <ul class="collapse list-unstyled" id="homeFriends">
+            <li>
+              <a (click)="usersFriendship()">Add friend</a>
+            </li>
+            <li>
+              <a (click)="friendshipRequests()">Friends requests</a>
+            </li>
+            <li>
+              <a (click)="friends()">See friends</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+            href="#homeCollection"
+            data-toggle="collapse"
+            aria-expanded="false"
+            class="dropdown-toggle"
+            >Collection</a
+          >
+          <ul class="collapse list-unstyled" id="homeCollection">
+            <li>
+              <a>Add Collection</a>
+            </li>
+            <li>
+              <a>View Collection</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a (click)="myProfile()">Edit profile</a>
+        </li>
+        <li>
+          <a (click)="logout()">Exit</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
-<!-- partial -->
-  <script src='https://unpkg.com/@popperjs/core@2'></script><script  src="./script.js"></script>
-</body>
-</html>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>

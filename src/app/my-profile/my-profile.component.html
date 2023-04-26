@@ -1,54 +1,153 @@
 <div class="d-flex" id="content-wrapper">
-    <div id="sidebar-container" class="border-right sidebar-container">
-        <app-sidebar></app-sidebar>
-    </div>
-    <div id="page-content-wrapper" class="w-100 bg-light-blue">
-        <app-head-nav> </app-head-nav>
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-5" style=" background-size: cover;">
-                <h2>
-                    Click to modify your profile
-                </h2>
-                <button [hidden]="state" class="btn btn-warning" (click)="changeData()">Change data profile</button>
-                <form>
-                    <div class="form-group">
-                        <label [hidden]="!state">Username : </label>
-                        <input [hidden]="!state" type="text" class="form-control" id="username"  name="username" [(ngModel)]="this.user.username">
-                    </div>
-                    <div class="form-group">
-                        <label [hidden]="!state">Email : </label>
-                        <input [hidden]="!state" type="text" class="form-control" id="email"  name="email" [(ngModel)]="this.user.email">
-                    </div>
-                    <div class="form-group">
-                        <label [hidden]="!state">Phone number : </label>
-                        <input [hidden]="!state" type="number" class="form-control" id="phone" 
-                            name="phone" [(ngModel)]="this.user.phone">
-                    </div>
-                    
-
-                    <button [hidden]="!state" class="btn btn-danger" >Clean</button>
-                    <button (click)="updateUser()" [hidden]="!state" class="btn btn-warning" style="position: relative; left:5px;" >Update</button>
-
-                </form>
+  <div id="sidebar-container" class="border-right sidebar-container">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div id="page-content-wrapper" class="w-100 bg-light-blue mw-100" style="background-color: #f0f0f0">
+    <app-head-nav> </app-head-nav>
+    <div class="container vh-100">
+      <div
+        class="row justify-content-md-center vh-100"
+        style="padding-top: 20px"
+      >
+        <!-- IMAGEN -->
+        <div class="col-xl-4">
+          <!-- Profile picture card-->
+          <div class="card mb-4 mb-xl-0">
+            <div class="card-header">Profile Picture</div>
+            <div class="card-body text-center">
+              <!-- Profile picture image-->
+              <img
+                class="img-account-profile rounded-circle mb-5"
+                src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                alt=""
+              />
+              <!-- Profile picture help block-->
+              <div class="small font-italic text-muted mb-4">
+                JPG or PNG no larger than 5 MB
+              </div>
+              <!-- Profile picture upload button-->
+              <button class="btn btn-primary" type="button">
+                Upload new image
+              </button>
             </div>
-            <div class="col col-lg-3">
-                <h2>
-                    New password?
-                </h2>
-                <button [hidden]="!state" class="btn btn-warning" (click)="changePassword()" >Change password</button>
-                <p [hidden]="state">Introduce tu nueva contraseña y repitela en el siguiente formulario</p>
-                <form>
-                    <div class="form-group">
-                        <label [hidden]="state">Password: </label>
-                        <input [hidden]="state" type="password" class="form-control" id="password" name="password" [(ngModel)]="this.user.password">
-                    </div>
-                    <div class="form-group">
-                        <label [hidden]="state">Repite password: </label>
-                        <input [hidden]="state" type="password" class="form-control" id="password2" name="password2" [(ngModel)]="this.user.password2">
-                    </div>
-                    <button (click)="updatePassword()"[hidden]="state" class="btn btn-warning" >Update</button>
-                </form>
-            </div>
+          </div>
         </div>
+
+        <!-- CONTENT -->
+        <div class="col-xl-8">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            <div class="card-header">Account Details</div>
+            <div class="card-body">
+              <form>
+                <!-- Form Group (username)-->
+                <div class="mb-3" [hidden]="!state">
+                  <label class="small mb-1" for="inputUsername"
+                    >Username:</label
+                  >
+                  <input
+                    id="username"
+                    name="username"
+                    [(ngModel)]="this.user.username"
+                    class="form-control"
+                    id="inputUsername"
+                    type="text"
+                    placeholder="Enter your username"
+                    value="username"
+                  />
+                </div>
+
+                <div class="mb-3" [hidden]="!state">
+                  <label class="small mb-1" for="email">Email:</label>
+                  <input
+                    id="email"
+                    name="email"
+                    [(ngModel)]="this.user.email"
+                    class="form-control"
+                    type="email"
+                    placeholder="Enter your username"
+                    value="username"
+                  />
+                </div>
+
+                <div class="mb-3" [hidden]="!state">
+                  <label class="small mb-1" for="inputEmail"
+                    >Phone number:</label
+                  >
+                  <input
+                    id="email"
+                    ntype="number"
+                    class="form-control"
+                    id="phone"
+                    name="inputEmail"
+                    [(ngModel)]="this.user.phone"
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter your username"
+                    value="username"
+                  />
+                </div>
+                <button [hidden]="!state" class="btn btn-danger">Clean</button>
+                <!-- Save changes button-->
+                <button
+                  (click)="updateUser()"
+                  [hidden]="!state"
+                  class="btn btn-warning"
+                  style="margin-left: 5px;"
+                >
+                  Update
+                </button>
+
+                <button
+                  [hidden]="!state"
+                  class="btn btn-warning"
+                  (click)="changePassword()"
+                  style="margin-left: 5px;"
+                >
+                  Change password
+                </button>
+
+                <p [hidden]="state">
+                  Enter your new password and repeat it in the following form
+                </p>
+                <form>
+                  <div class="form-group">
+                    <label [hidden]="state">Password: </label>
+                    <input
+                      [hidden]="state"
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      [(ngModel)]="this.user.password"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label [hidden]="state">Repite password: </label>
+                    <input
+                      [hidden]="state"
+                      type="password"
+                      class="form-control"
+                      id="password2"
+                      name="password2"
+                      [(ngModel)]="this.user.password2"
+                    />
+                  </div>
+                  <button
+                    (click)="updatePassword()"
+                    [hidden]="state"
+                    class="btn btn-warning"
+                  >
+                    Update
+                  </button>
+                </form>
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,26 +1,64 @@
 <div class="d-flex" id="content-wrapper">
-    <div id="sidebar-container" class="border-right sidebar-container">
-      <app-sidebar></app-sidebar>
-    </div>
-    <div id="page-content-wrapper" class="w-100 bg-light-blue">
-      <app-head-nav> </app-head-nav>
-      <div class="row" style="background-color:#f0f0f0; height: 100%; margin-left: 0px;">
-        <div class="btn-center">
-            <input [(ngModel)]="username" id="username" type="text" placeholder="Username"/>
-            <button (click)="searchUser()"style="margin-left: 10px;"class="btn btn-success" >Search user</button>
-            <button *ngIf="this.state" (click)="allUsers()"style="margin-left: 10px;"class="btn btn-warning" >Show all</button>
+  <div id="sidebar-container" class="border-right sidebar-container">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div
+    id="page-content-wrapper"
+    class="w-100 bg-light-blue"
+    style="background-color: #f0f0f0"
+  >
+    <app-head-nav> </app-head-nav>
+    <div class="container">
+      <div class="row">
+        <div class="btn-center" style="margin-bottom: 30px">
+          <input
+            [(ngModel)]="username"
+            id="username"
+            type="text"
+            placeholder="Username"
+          />
+          <button
+            (click)="searchUser()"
+            style="margin-left: 10px"
+            class="btn btn-success"
+          >
+            Search user
+          </button>
+          <button
+            *ngIf="this.state"
+            (click)="allUsers()"
+            style="margin-left: 10px"
+            class="btn btn-warning"
+          >
+            Show all
+          </button>
         </div>
-        <div class="col-lg-4 row-cards" *ngFor="let user of users" style="flex-wrap: wrap;">
-        <div (click)="userProfile(user)"class="card" style="width: 18rem; margin: auto;">
-            <img class="card-img-top" src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" alt="Card image cap">
+      </div>
+
+      <div class="row">
+        <div
+          class="col-lg-4 row-cards"
+          *ngFor="let user of users"
+          style="flex-wrap: wrap"
+        >
+          <div
+            (click)="userProfile(user)"
+            class="card"
+            style="width: 18rem; margin: auto"
+          >
+            <img
+              class="card-img-top"
+              src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png"
+              alt="Card image cap"
+            />
             <div class="card-body">
-              <h5 class="card-text" style="text-align: center;">{{user.username}}</h5>
-                
+              <h5 class="card-text" style="text-align: center">
+                {{ user.username }}
+              </h5>
             </div>
-            
+          </div>
         </div>
       </div>
-      </div>
-      
     </div>
+  </div>
 </div>

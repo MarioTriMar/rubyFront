@@ -1,71 +1,131 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-            <div class="container card-0 justify-content-center ">
-                <div class="card-body px-sm-4 px-0">
-                    <div class="row justify-content-center mb-5">
-                        <div class="col-md-10 col"><h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">CREATE NEW NOTE</h3></div>
-                    </div>
-                    <div class="row justify-content-center round">
-                        <div class="col-lg-10 col-md-12 ">
-                            <div class="card shadow-lg card-1">
-                                <div class="card-body inner-card">
-                                    <div class="row justify-content-left">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-5 col-md-6 col-sm-12">
-                                                <div  class="form-group"><label  for="first-name">Note Title*</label>
-                                                    <input [disabled]="!creation && !update" type="text" [(ngModel)]="note.title" class="form-control" id="note-title" placeholder="Note title here"> </div>
-                                                <div class="form-group"> <label for="tag">Tag</label>
-                                                    <select [disabled]="!creation && !update" class="form-control" [(ngModel)]="note.tag"> 
-                                                        <option value="Shopping">Shopping</option>
-                                                        <option value="Work">Work</option> 
-                                                        <option value="Diary"  selected>Diary</option> 
-                                                        <option value="Other">Other</option> 
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-5 col-md-6 col-sm-12">
-                                                <div class="col-md-12 col-lg-12 col-12"> 
-                                                    <div class="form-group">
-                                                        <label class="my-auto">URL image</label> 
-                                                        <input [disabled]="!creation && !update" id="url" type="text" class="form-control" [(ngModel)]="note.image"/>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-12 col-lg-10 col-12">
-                                            <div class="form-group"> 
-                                                <label for="exampleFormControlTextarea2">Message*</label> 
-                                                <input [disabled]="!creation && !update" class="my-textarea"type="text" [(ngModel)]="note.text" id="message" rows="5"/>
-                                            </div>
-                                            <div class="row justify-content-center mb-5">
-                                                <div class="col-lg-4 col-auto ">
-                                                    <button (click)="createNote()" *ngIf="creation" type="button" class="btn btn-primary btn-block">
-                                                        <small class="font-weight-bold"  >Save Note</small>                                        
-                                                    </button> 
-                                                    <button (click)="updateNote()" *ngIf="!creation && update"  type="button" class="btn btn-primary btn-block">
-                                                        <small class="font-weight-bold" >Update Note</small>
-                                                    </button> 
-                                                    <button (click)="shareNote()" *ngIf="!creation && update" type="button" class="btn btn-warning btn-block">
-                                                        <small class="font-weight-bold">Share Note</small>
-                                                    </button>
-                                                    <button (click)="deleteNote()" *ngIf="!creation && update" type="button" class="btn btn-danger btn-block">
-                                                        <small class="font-weight-bold">Delete Note</small>
-                                                    </button> 
-                                                    
-                                                </div>
-                                            </div>
-                                            <em>* indicates that is a required field</em>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="page-wrapper bg-dark p-t-100 p-b-50">
+  <div class="wrapper wrapper--w900">
+    <div class="card card-6">
+      <div class="card-heading">
+        <h2 *ngIf="creation" class="title">CREATE NEW NOTE</h2>
+        <h2 *ngIf="!creation && update" class="title">EDIT NOTE</h2>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-row">
+            <div class="name">Note Title</div>
+            <div class="value">
+              <input
+                [disabled]="!creation && !update"
+                name="full_name"
+                type="text"
+                [(ngModel)]="note.title"
+                class="input--style-6"
+                id="note-title"
+                placeholder="Note title here"
+                required
+              />
             </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Tag</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  [disabled]="!creation && !update"
+                  class="form-control"
+                  [(ngModel)]="note.tag"
+                >
+                  <option value="Shopping">Shopping</option>
+                  <option value="Work">Work</option>
+                  <option value="Diary" selected>Diary</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Message</div>
+            <div class="value">
+              <div class="input-group">
+                <textarea
+                  [disabled]="!creation && !update"
+                  class="textarea--style-6"
+                  name="message"
+                  placeholder="Message of the note"
+                  [(ngModel)]="note.text"
+                  id="message"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">Upload CV</div>
+            <div class="value">
+              <div class="input-group js-input-file">
+                <input
+                  class="input-file"
+                  type="file"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  name="file_cv"
+                  id="file"
+                />
+                <label class="label--file" for="file">Choose file</label>
+                <span class="input-file__info">No file chosen</span>
+              </div>
+              <div class="label--desc">Upload an image.</div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer" style="text-align: center">
+        <button
+          (click)="createNote()"
+          *ngIf="creation"
+          type="button"
+          class="btn btn--radius-2 btn--green"
+          style="margin-right: 10px"
+        >
+          <small class="font-weight-bold">Save Note</small>
+        </button>
+        <button
+          (click)="updateNote()"
+          *ngIf="!creation && update"
+          type="button"
+          class="btn btn--radius-2 btn--blue-2"
+          style="margin-right: 10px"
+        >
+          <small class="font-weight-bold">Update Note</small>
+        </button>
+        <button
+          (click)="shareNote()"
+          *ngIf="!creation && update"
+          type="button"
+          class="btn btn--radius-2 btn--orange"
+          style="margin-right: 10px"
+        >
+          <small class="font-weight-bold">Share Note</small>
+        </button>
+        <button
+          (click)="deleteNote()"
+          *ngIf="!creation && update"
+          type="button"
+          class="btn btn--radius-2 btn--red"
+          style="margin-right: 10px"
+        >
+          <small class="font-weight-bold">Delete Note</small>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Jquery JS-->
+<script src="./vendor/jquery/jquery.min.js"></script>
+<!-- Main JS-->
+<!-- <script src="js/global.js"></script> -->

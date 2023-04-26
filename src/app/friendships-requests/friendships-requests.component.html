@@ -1,25 +1,64 @@
 <div class="d-flex" id="content-wrapper">
-    <div id="sidebar-container" class="border-right sidebar-container">
-      <app-sidebar></app-sidebar>
-    </div>
-    <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color:#f0f0f0;">
-      <app-head-nav> </app-head-nav>
-      <div class="row" style="background-color:#f0f0f0; height: 100%; margin-left: 0px;">
-        
-        <div class="col-lg-4 row-cards" *ngFor="let requests of friendshipsRequests">
-            <div class="card" style="width: 18rem; margin-top: 10px;">
-                <img class="card-img-top" src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">{{requests.nameB}} wants to be your friend.</p>
-                  <p>{{requests.created_at.toString().substring(0,10)}}</p>
-                  <div style="display: flex;">
-                    <a (click)="profile(requests)" style="margin-right: 10px;" class="btn btn-primary">Check profile</a>
-                    <a (click)="accept(requests)"  style="margin-right: 10px;"  class="btn btn-success">Accept request</a>
-                    <a (click)="reject(requests)" class="btn btn-danger">Reject request</a>
-                  </div>
-                  
-                </div>
+  <div id="sidebar-container" class="border-right sidebar-container">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div
+    id="page-content-wrapper"
+    class="w-100 bg-light-blue"
+    style="background-color: #f0f0f0"
+  >
+    <app-head-nav> </app-head-nav>
+    <div class="container">
+      <div class="row" style="text-align: center; margin-top: 20px;">
+        <h2>Friends request</h2>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-lg-4 row-cards"
+          *ngFor="let requests of friendshipsRequests"
+        >
+          <div class="card" style="width: 18rem; margin-top: 10px">
+            <img
+              class="card-img-top"
+              src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png"
+              alt="Card image cap"
+            />
+            <div class="card-body" style="text-align: center">
+              <p class="card-text">
+                <strong>{{ requests.nameB }}</strong> wants to be your friend.
+              </p>
+              <p>{{ requests.created_at.toString().substring(0, 10) }}</p>
+              <div>
+                <a
+                  (click)="profile(requests)"
+                  style="margin-right: 10px"
+                  class="btn btn-primary"
+                  ><img
+                    src="assets/icons/eye.png"
+                    style="max-height: 1.5em"
+                    alt="See note"
+                /></a>
+                <a
+                  (click)="accept(requests)"
+                  style="margin-right: 10px"
+                  class="btn btn-success"
+                  ><img
+                    src="assets/icons/check.png"
+                    style="max-height: 1.5em"
+                    alt="See note"
+                /></a>
+                <a (click)="reject(requests)" class="btn btn-danger"
+                  ><img
+                    src="assets/icons/cross.png"
+                    style="max-height: 1.5em"
+                    alt="See note"
+                /></a>
+              </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>

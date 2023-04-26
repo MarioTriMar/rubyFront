@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Note } from '../note';
 import { NoteService } from '../note.service';
+import { HttpClient, HttpRequest } from '@angular/common/http';
+import { read } from '@popperjs/core';
 
 @Component({
   selector: 'app-note-creation',
@@ -11,89 +13,156 @@ import { NoteService } from '../note.service';
 })
 export class NoteCreationComponent implements OnInit {
   note: Note = new Note();
- 
+
   opcionSeleccionado: string;
   verSeleccion: string;
-  creation:boolean;
+  creation: boolean;
   update: boolean;
-  constructor(private noteService:NoteService, private router:Router) { }
+  selectedFile: File;
+  image: File;
 
-  ngOnInit(): void {
-    if(sessionStorage.getItem("type")=="Creation"){
-      this.creation=true;
-      this.update=false;
-      this.note.tag="Diary"
-      
-    }else if(sessionStorage.getItem("type")=="Update") {
-      this.creation=false;
-      this.update=true;
-      this.loadNote(sessionStorage.getItem("idNote")!)
-      console.log(this.note)
-    }else{
-      console.log(sessionStorage.getItem("idNote")!)
-      this.creation=false
-      this.update=false
-      this.loadNote(sessionStorage.getItem("idNote")!)
-    }
-    
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      if (reader.result != null) {
+        const base64String = reader.result.toString();
+        this.note.image = base64String;
+      }
+
+    };
   }
 
-  loadNote(id:string){
-    this.noteService.getNoteById(id).subscribe(data=>{
-      this.note=data;
+  constructor(private noteService: NoteService, private router: Router, private http: HttpClient) { }
+
+  ngOnInit(): void {
+    if (sessionStorage.getItem("type") == "Creation") {
+      this.creation = true;
+      this.update = false;
+      this.note.tag = "Diary"
+
+    } else if (sessionStorage.getItem("type") == "Update") {
+      this.creation = false;
+      this.update = true;
+      this.loadNote(sessionStorage.getItem("idNote")!)
+      console.log(this.note)
+    } else {
+      console.log(sessionStorage.getItem("idNote")!)
+      this.creation = false
+      this.update = false
+      this.loadNote(sessionStorage.getItem("idNote")!)
+    }
+
+  }
+
+  loadNote(id: string) {
+    this.noteService.getNoteById(id).subscribe(data => {
+      this.note = data;
     })
   }
 
-  createNote(){
-    let valido=true;
-    if(this.note.title==undefined || this.note.title==""){
+  createNote() {
+    let valido = true;
+    if (this.note.title == undefined || this.note.title == "") {
       alert("Title is required")
-      valido=false
+      valido = false
     }
-    if(this.note.text==undefined || this.note.text=="") {
+    if (this.note.text == undefined || this.note.text == "") {
       alert("Text is required")
-      valido=false
+      valido = false
     }
-    if(valido){
-      this.note.idUser=localStorage.getItem("username")!
-      this.noteService.saveNote(this.note).subscribe(data=>{
+    if (valido) {
+      //this.saveNote()
+      this.note.idUser = localStorage.getItem("username")!
+      /*
+            // Created the reader for parsing the image to base64
+            const reader = new FileReader();
+            reader.readAsDataURL(this.selectedFile);
+      
+            reader.onload = () => {
+              if (reader != null && reader.result != null) {
+                // Creating base64 chain
+                const base64String = reader.result.toString().split(',')[1];
+                console.log(base64String); // This is the Base64 string representation of the file
+                // attach the base64 chain to the note
+                this.note.image = base64String;
+                this.noteService.saveNote(this.note).subscribe(data => {
+                  this.router.navigate(['/noteManagement']);
+                }, (error) => {
+                  console.log(error);
+                })
+      
+              }
+            };
+      */
+      this.noteService.saveNote(this.note).subscribe(data => {
         this.router.navigate(['/noteManagement']);
-      }, (error)=>{
+      }, (error) => {
         console.log(error);
-      })  
+      })
+
     }
   }
-  updateNote(){
-    let valido=true;
-    if(this.note.title==undefined || this.note.title==""){
+  saveNote() {
+
+    try {
+      const formData = new FormData();
+      formData.append('image', this.selectedFile, this.selectedFile.name);
+
+      this.noteService.saveImage(formData).subscribe(
+        response => {
+          console.log(response)
+        },
+        error => {
+          console.log(error)
+        }
+      );
+
+      this.noteService.saveNote(this.note).subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
+    } catch (error) {
+      console.error(error);
+
+    }
+
+
+  }
+
+  updateNote() {
+    let valido = true;
+    if (this.note.title == undefined || this.note.title == "") {
       alert("Title is required")
-      valido=false
+      valido = false
     }
-    if(this.note.text==undefined || this.note.text=="") {
+    if (this.note.text == undefined || this.note.text == "") {
       alert("Text is required")
-      valido=false
+      valido = false
     }
-    if(valido){
-      this.noteService.updateNote(this.note).subscribe(data=>{
+    if (valido) {
+      this.noteService.updateNote(this.note).subscribe(data => {
         this.router.navigate(['/noteManagement']);
-      }, (error)=>{
+      }, (error) => {
         console.log(error);
-      })  
+      })
     }
   }
 
-  deleteNote(){
+  deleteNote() {
     console.log(this.note._id.$oid)
-    this.noteService.deleteNote(this.note).subscribe(data=>{
+    this.noteService.deleteNote(this.note).subscribe(data => {
       this.router.navigate(['/noteManagement']);
-    }, (error)=>{
+    }, (error) => {
       console.log(error);
-    }) 
+    })
   }
-  shareNote(){
+  shareNote() {
     console.log("click")
-    localStorage.setItem("idNote",this.note._id.$oid)
+    localStorage.setItem("idNote", this.note._id.$oid)
     this.router.navigate(['/shareNote'])
   }
-}
 
+}
