@@ -13,9 +13,10 @@ import { read } from '@popperjs/core';
 })
 export class NoteCreationComponent implements OnInit {
   note: Note = new Note();
-
+  tipoUsuario = localStorage.getItem('tokenSessionTipo')!;
   opcionSeleccionado: string;
   verSeleccion: string;
+  isAdmin:boolean;
   creation: boolean;
   update: boolean;
   selectedFile: File;
@@ -38,6 +39,9 @@ export class NoteCreationComponent implements OnInit {
   constructor(private noteService: NoteService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    if (this.tipoUsuario == "admin") {
+      this.isAdmin = true;
+    }
     if (sessionStorage.getItem("type") == "Creation") {
       this.creation = true;
       this.update = false;

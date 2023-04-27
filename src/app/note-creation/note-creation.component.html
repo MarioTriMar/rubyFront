@@ -104,7 +104,7 @@
         </button>
         <button
           (click)="shareNote()"
-          *ngIf="!creation && update"
+          *ngIf="!creation && update && !isAdmin"
           type="button"
           class="btn btn--radius-2 btn--orange"
           style="margin-right: 10px"
