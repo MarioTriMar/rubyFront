@@ -12,7 +12,7 @@ export class AddnoteCollectionComponent implements OnInit {
   notes:Note[];
   selectedNote:Note;
   constructor(private noteService:NoteService) { }
-
+  //componente para añadir nota a la coleccion
   ngOnInit(): void {
     this.loadNotes()
   }

@@ -12,6 +12,7 @@ export class CollectionNotesComponent implements OnInit {
   notes:Note[];
   constructor(private noteService:NoteService, private router:Router) { }
 
+  //Este componente carga todas las notas de la coleccion
   ngOnInit(): void {
     this.loadNotes()
   }

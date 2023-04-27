@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit {
-  users: User[];
+  friends: any[];
   constructor(private usersService:UserService, private router:Router) { }
 
   ngOnInit(): void {
@@ -18,15 +18,16 @@ export class FriendsComponent implements OnInit {
   getAllFriends(){
     this.usersService.getAllFriends(localStorage.getItem("idUser")!).subscribe(data=>{
       console.log(data)
-      this.users=data
+      this.friends=data
     },error =>{
       console.log(error)
     })
   }
-  userProfile(user:User) {
-    this.usersService.getHasFriendshipRequest(localStorage.getItem("idUser")!,user._id.$oid).subscribe(data=>{
+  userProfile(friend:any) {
+    this.usersService.getHasFriendshipRequest(localStorage.getItem("idUser")!,friend.user._id.$oid).subscribe(data=>{
       localStorage.setItem("profileType", data.message)
-      localStorage.setItem("userProfile", user._id.$oid)
+      localStorage.setItem("userProfile", friend.user._id.$oid)
+      localStorage.setItem("idFriendship",friend.idRequest)
       this.router.navigate(["/userProfile"])
     },error=>{
       console.log(error)

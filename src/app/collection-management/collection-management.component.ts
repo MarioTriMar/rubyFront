@@ -14,7 +14,9 @@ export class CollectionManagementComponent implements OnInit {
   name:string;
   constructor(private noteService:NoteService,private router:Router) { }
 
+  //Este es el primer componente que se tiene que cargar al hacer click en collections
   ngOnInit(): void {
+    this.getCollections()
   }
   getCollections(){
     this.noteService.getCollectionsOfUser(localStorage.getItem("idUser")!).subscribe(data=>{
@@ -24,6 +26,7 @@ export class CollectionManagementComponent implements OnInit {
       console.log(error)
     })
   }
+  //metodo que se ejecute cuando hagas click en el boton arriba del nav
   createCollection(){
     this.noteService.createCollection(this.name, localStorage.getItem("idUser")!).subscribe(data=>{
       console.log(data)
