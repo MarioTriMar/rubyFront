@@ -8,8 +8,12 @@ import { Form } from '@angular/forms';
   providedIn: 'root'
 })
 export class NoteService {
-
-  private baseURL = "http://192.168.18.108:3000/api/"
+  
+  
+  
+  
+  
+  private baseURL = "http://localhost:3000/api/"
   constructor(private httpClient: HttpClient) { }
   getAllNotesByUserId(idUser: string) {
     console.log(this.baseURL + "get_allNotesByUserId?idUser=" + idUser)
@@ -51,5 +55,23 @@ export class NoteService {
   rejectRequest(requestId: string) {
     return this.httpClient.delete(this.baseURL + "reject_noteRequest?requestId=" + requestId)
   }
-
+  getCollectionsOfUser(idUser: string) {
+    return this.httpClient.get<any>(this.baseURL + "get_collectionsOfUser?idUser=" + idUser);
+  }
+  createCollection(name: string, idUser:string):Observable<any> {
+    let info={
+      "name":name,
+      "idUser":idUser
+    }
+    return this.httpClient.post(this.baseURL + "create_collection", info)
+  }
+  getNotesOfCollection(collectionId: string) {
+    return this.httpClient.get<any>(this.baseURL + "get_notesOfCollection?collectionId=" + collectionId);
+  }
+  deleteNoteOfCollection(noteId: string, collectionId:string) {
+    return this.httpClient.delete(this.baseURL + "reject_noteRequest?collectionId=" + collectionId+"&noteId="+noteId)
+  }
+  addNoteToCollection(collectionId: string, noteId: string) {
+    return this.httpClient.put(this.baseURL + "add_noteToCollection?collectionId=" + collectionId,"&noteId="+noteId)
+  }
 }

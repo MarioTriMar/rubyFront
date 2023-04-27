@@ -8,7 +8,7 @@ import { Friendship } from './friendship';
 })
 export class UserService {
   
-  private baseURL = "http://192.168.18.108:3000/api/"
+  private baseURL = "http://localhost:3000/api/"
   constructor(private httpClient:HttpClient) { }
 
   addUser(user: User):Observable<any>{

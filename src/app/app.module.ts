@@ -19,6 +19,9 @@ import { FriendsComponent } from './friends/friends.component';
 import { ShareNoteComponent } from './share-note/share-note.component';
 import { NoteRequestsComponent } from './note-requests/note-requests.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { CollectionManagementComponent } from './collection-management/collection-management.component';
+import { CollectionNotesComponent } from './collection-notes/collection-notes.component';
+import { AddnoteCollectionComponent } from './addnote-collection/addnote-collection.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     FriendsComponent,
     ShareNoteComponent,
     NoteRequestsComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    CollectionManagementComponent,
+    CollectionNotesComponent,
+    AddnoteCollectionComponent
   ],
   imports: [
     BrowserModule,

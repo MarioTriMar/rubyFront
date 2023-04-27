@@ -12,6 +12,9 @@ import { FriendsComponent } from './friends/friends.component';
 import { ShareNoteComponent } from './share-note/share-note.component';
 import { NoteRequestsComponent } from './note-requests/note-requests.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { CollectionManagementComponent } from './collection-management/collection-management.component';
+import { CollectionNotesComponent } from './collection-notes/collection-notes.component';
+import { AddnoteCollectionComponent } from './addnote-collection/addnote-collection.component';
 
 const routes: Routes = [
   {path : 'noteManagement',component:NotesManagementComponent},
@@ -26,7 +29,10 @@ const routes: Routes = [
   {path: 'friends', component:FriendsComponent},
   {path: 'shareNote', component:ShareNoteComponent},
   {path: 'noteRequests', component:NoteRequestsComponent},
-  {path: 'myProfile', component:MyProfileComponent}
+  {path: 'myProfile', component:MyProfileComponent},
+  {path: 'collectionManagement', component:CollectionManagementComponent},
+  {path: 'collection', component:CollectionNotesComponent},
+  {path: 'addNoteToCollection', component:AddnoteCollectionComponent}
 ];
 
 @NgModule({
