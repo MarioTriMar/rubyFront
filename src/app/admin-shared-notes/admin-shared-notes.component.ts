@@ -36,6 +36,9 @@ export class AdminSharedNotesComponent implements OnInit {
     },
     "user": nombre del usuario al que le han compartido la nota
   }
+
+  por ejemplo, para acceder a el titulo de la nota y ponerlo en el card será {{shared.note.title}}
+  si usais este *ngFor="let shared of sharedNotes"
   */
   loadSharedNotes(){
     this.noteService.getAllSharedNotes().subscribe(data=>{
