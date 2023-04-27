@@ -20,8 +20,15 @@ export class UsersFriendshipComponent implements OnInit {
   }
   getAllUsers(){
     this.usersService.getAllUsers().subscribe(data=>{
-      
       this.users=data
+      let n = 0;
+      for (let i = 0; i < this.users.length; i++){
+        if (localStorage.getItem("idUser") == this.users[i]._id.$oid){
+            n = i;
+            break;
+        }
+      }this.users.splice(n,1);
+
     },error =>{
       console.log(error)
     })
@@ -40,6 +47,14 @@ export class UsersFriendshipComponent implements OnInit {
     this.usersService.getUsersContaining(this.username).subscribe(data=>{
       console.log(data)
       this.users=data
+      let n = 0;
+      for (let i = 0; i < this.users.length; i++){
+        if (localStorage.getItem("idUser") == this.users[i]._id.$oid){
+            n = i;
+            break;
+        }
+      }this.users.splice(n,1);
+
     },error =>{
       console.log(error)
     })
