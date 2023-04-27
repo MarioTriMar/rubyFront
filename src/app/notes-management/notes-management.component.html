@@ -19,7 +19,7 @@
             <div style="text-align: center">
               <img
                 class="card-img-top"
-                src="{{ note.image }}"
+                src="{{note.image}}"
                 alt="Card image cap"
               />
             </div>
@@ -69,7 +69,7 @@
                   alt="See note"
                 />
               </button>
-              <button
+              <button *ngIf="!isadmin"
                 type="button"
                 class="btn btn-warning"
                 style="margin: 10px"

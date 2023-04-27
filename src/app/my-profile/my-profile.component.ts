@@ -8,10 +8,26 @@ import { User } from '../user';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-
-
   user:User
   state:boolean
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      if (reader.result != null) {
+        const base64String = reader.result.toString();
+        this.user.image = base64String;
+      }
+
+    };
+  }
+
+
+
+
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
@@ -34,7 +50,7 @@ export class MyProfileComponent implements OnInit {
       dataAny=data
       this.user.password=""
       this.user.password2=""
-      
+      this.user.image = this.decodedImage(this.user.image);
       console.log(this.user)
     },error=>{
       console.log(error)
@@ -62,5 +78,15 @@ export class MyProfileComponent implements OnInit {
     }else{
       alert("Passwords do not match")
     }
+  }
+  decodedImage(image: string) {
+    let decodedString = atob(image);
+    let byteCharacters = decodedString.split('').map(char => char.charCodeAt(0));
+    let byteArray = new Uint8Array(byteCharacters);
+    let blob = new Blob([byteArray], { type: 'image/png' }); // replace with the actual image format
+    let url = URL.createObjectURL(blob);
+    console.log(url);
+    return url
+
   }
 }
