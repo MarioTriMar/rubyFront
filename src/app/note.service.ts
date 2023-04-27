@@ -8,11 +8,7 @@ import { Form } from '@angular/forms';
   providedIn: 'root'
 })
 export class NoteService {
-  
-  
-  
-  
-  
+ 
   private baseURL = "http://localhost:3000/api/"
   constructor(private httpClient: HttpClient) { }
   getAllNotesByUserId(idUser: string) {
@@ -74,4 +70,8 @@ export class NoteService {
   addNoteToCollection(collectionId: string, noteId: string) {
     return this.httpClient.put(this.baseURL + "add_noteToCollection?collectionId=" + collectionId,"&noteId="+noteId)
   }
+  getAllSharedNotes() {
+    return this.httpClient.get<any>(this.baseURL + "get_AllNotesShared");
+  }
+  
 }

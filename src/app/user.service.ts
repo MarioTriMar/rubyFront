@@ -54,4 +54,10 @@ export class UserService {
   getAllFriends(userId:string){
     return this.httpClient.get<any[]>(this.baseURL+"get_allFriends?_id="+userId);
   }
+  getAllFriendships(){
+    return this.httpClient.get<any[]>(this.baseURL+"get_allFriendships");
+  }
+  deleteFriendship(idRequest: string):Observable<any> {
+    return this.httpClient.delete(this.baseURL+"reject_friendshipRequest?_id=" +idRequest)
+  }
 }

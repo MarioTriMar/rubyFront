@@ -22,6 +22,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CollectionManagementComponent } from './collection-management/collection-management.component';
 import { CollectionNotesComponent } from './collection-notes/collection-notes.component';
 import { AddnoteCollectionComponent } from './addnote-collection/addnote-collection.component';
+import { AdminFriendshipsComponent } from './admin-friendships/admin-friendships.component';
+import { AdminSharedNotesComponent } from './admin-shared-notes/admin-shared-notes.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { AddnoteCollectionComponent } from './addnote-collection/addnote-collect
     MyProfileComponent,
     CollectionManagementComponent,
     CollectionNotesComponent,
-    AddnoteCollectionComponent
+    AddnoteCollectionComponent,
+    AdminFriendshipsComponent,
+    AdminSharedNotesComponent
   ],
   imports: [
     BrowserModule,
