@@ -23,11 +23,13 @@ export class UserService {
   updateUser(user: User):Observable<any> {
     return this.httpClient.put(this.baseURL+"update_user?_id="+user._id.$oid, user)
   }
+  deleteUser(user: User):Observable<any> {
+    return this.httpClient.delete(this.baseURL+"delete_user?_id="+user._id.$oid)
+  }
   updatePassword(info:any):Observable<any>{
     return this.httpClient.put(this.baseURL+"update_password?userId="+info.userId, info)
   }
   getUserById(userId: string){
- 
     return this.httpClient.get<User>(this.baseURL+"get_userById?_id="+userId)
   }
   getUsersContaining(username:string){

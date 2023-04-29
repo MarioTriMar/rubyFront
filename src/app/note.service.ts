@@ -4,6 +4,7 @@ import { Note } from './note';
 import { Observable } from 'rxjs';
 import { SharedNote } from './shared-note';
 import { Form } from '@angular/forms';
+import { User } from './user';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,6 @@ export class NoteService {
   private baseURL = "http://localhost:3000/api/"
   constructor(private httpClient: HttpClient) { }
   getAllNotesByUserId(idUser: string) {
-    console.log(this.baseURL + "get_allNotesByUserId?idUser=" + idUser)
     return this.httpClient.get<Note[]>(this.baseURL + "get_allNotesByUserId?idUser=" + idUser);
   }
 
@@ -22,6 +22,10 @@ export class NoteService {
   deleteNote(note: Note) {
     console.log(note._id.$oid)
     return this.httpClient.delete(this.baseURL + "delete_note?_id=" + note._id.$oid
+    )
+  }
+  deleteAllNotesByUserId(user:User) {
+    return this.httpClient.delete(this.baseURL + "delete_allNotesByUserId?idUser=" + user.username
     )
   }
   saveImage(formData: FormData): Observable<any> {

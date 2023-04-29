@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 
+
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -24,10 +25,6 @@ export class MyProfileComponent implements OnInit {
 
     };
   }
-
-
-
-
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
@@ -78,6 +75,10 @@ export class MyProfileComponent implements OnInit {
     }else{
       alert("Passwords do not match")
     }
+    const passwordCloseButton = document.getElementById('passwordClose');
+        if (passwordCloseButton) {
+            passwordCloseButton.click();
+}
   }
   decodedImage(image: string) {
     let decodedString = atob(image);

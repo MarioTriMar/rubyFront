@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { User } from '../user';
+import { Note } from '../note';
 import { UserService } from '../user.service';
+import { NoteService } from '../note.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +14,7 @@ export class UsersManagementComponent implements OnInit {
   currentPageLength: ElementRef;
   totalPages: number;
   displayData: any;
-  pagelength = [10, 15, 20, 30];
+  pagelength = [5]
   pageArray: any;
   first: boolean = true;
   page: number = 1;
@@ -23,15 +25,38 @@ export class UsersManagementComponent implements OnInit {
   state = true;
   user:User=new User();
   users: User[];
-  constructor(private usersService:UserService, private router:Router) { }
+  notes:Note[];
+
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      if (reader.result != null) {
+        const base64String = reader.result.toString();
+        this.user.image = base64String;
+      }
+
+    };
+  }
+
+  constructor(private usersService:UserService, private noteService:NoteService, private router:Router) { }
 
   ngOnInit(): void {
     this.getAllUsers()
+    this.nextPage();
+    this.pageLengthChange(5);
+    
   }
   getAllUsers(){
     this.usersService.getAllUsers().subscribe(data=>{
       console.log(data)
       this.users=data
+      for (let i = 0 ; i < this.users.length; i++){
+        this.users[i].image = this.decodedImage(this.users[i].image);
+      }
     },error =>{
       console.log(error)
     })
@@ -44,6 +69,30 @@ export class UsersManagementComponent implements OnInit {
     this.user = user
     console.log(this.user.type)
   }
+  deleteUser(user:User){
+    this.usersService.deleteUser(user).subscribe(data => {
+      this.deleteAllNotesByUser(user);
+      alert("Borrado")
+      this.ngOnInit();
+      
+    }, error => {
+      console.log(error)
+    })
+  }
+    deleteAllNotesByUser(user:User) {
+      this.noteService.deleteAllNotesByUserId(user).subscribe(data => {
+      }, error => {
+        console.log(error)
+      })
+  
+    }
+    deleteNote(note: Note) {
+      this.noteService.deleteNote(note).subscribe(data => {
+      }, error => {
+        console.log(error)
+      })
+  
+    }
   updateUser(user:User){
     let valido=true;
     if(this.user.username==undefined || this.user.username==""){
@@ -106,5 +155,14 @@ export class UsersManagementComponent implements OnInit {
       }
     }
   }
+  decodedImage(image: string) {
+    let decodedString = atob(image);
+    let byteCharacters = decodedString.split('').map(char => char.charCodeAt(0));
+    let byteArray = new Uint8Array(byteCharacters);
+    let blob = new Blob([byteArray], { type: 'image/png' }); // replace with the actual image format
+    let url = URL.createObjectURL(blob);
+    console.log(url);
+    return url
 
+  }
 }

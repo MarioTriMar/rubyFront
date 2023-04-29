@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Friendship } from '../friendship';
+import { User } from '../user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
@@ -9,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./friendships-requests.component.css']
 })
 export class FriendshipsRequestsComponent implements OnInit {
-
-
+  user:User;
+  friends: User[];
   friendshipsRequests: any[]
   constructor(private usersService:UserService, private router:Router) { }
 
@@ -19,9 +20,18 @@ export class FriendshipsRequestsComponent implements OnInit {
     localStorage.setItem("profileType", "")
   }
   loadFriendshipRequests(){
+    console.log(localStorage.getItem("idUser")!)
     this.usersService.getFriendshipsRequestByUserId(localStorage.getItem("idUser")!).subscribe(data=>{
       this.friendshipsRequests=data
-      console.log( this.friendshipsRequests)
+      for (let i = 0 ; i < this.friendshipsRequests.length; i++){
+        this.usersService.getUserById(this.friendshipsRequests[i].userA).subscribe(data=>{
+          this.user = data;
+          this.friends.push(this.user);
+        }, error=>{
+          console.log(error)
+        })
+      }
+
     }, error=>{
       console.log(error)
     })

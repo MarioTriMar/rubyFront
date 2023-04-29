@@ -53,10 +53,14 @@ export class NotesManagementComponent implements OnInit {
     })
   }
   deleteNote(note: Note) {
-    console.log(note._id)
     this.noteService.deleteNote(note).subscribe(data => {
       alert("Borrado")
-      this.getAllNotesByUserId()
+      if (this.tipoUsuario == "user"){
+        this.getAllNotesByUserId()
+      }else{
+        this.getAllNotes()
+      }
+      
     }, error => {
       console.log(error)
     })

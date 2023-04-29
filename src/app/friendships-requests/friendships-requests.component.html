@@ -2,75 +2,43 @@
   <div id="sidebar-container" class="border-right sidebar-container">
     <app-sidebar></app-sidebar>
   </div>
-  <div
-    id="page-content-wrapper"
-    class="w-100 bg-light-blue"
-    style="background-color: #f0f0f0"
-  >
+  <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color: #f0f0f0">
     <app-head-nav> </app-head-nav>
     <div class="container">
       <div class="row" style="padding: 35px">
         <h2>Friends request</h2>
       </div>
-
+      
       <div class="row">
         <div class="col-lg-4" *ngFor="let requests of friendshipsRequests">
-          <div
-            class="single_advisor_profile wow fadeInUp"
-            data-wow-delay="0.2s"
-            style="
+          <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="
               visibility: visible;
               animation-delay: 0.2s;
               animation-name: fadeInUp;
-            "
-          >
+            ">
             <!-- Team Thumb-->
             <div class="advisor_thumb">
-              <img
-                style="max-height: 200px"
-                src=""
-                onerror="this.onerror=null;this.src='assets/default.png';"
-                alt=""
-              />
+              <img style="max-height: 200px" src="" onerror="this.onerror=null;this.src='assets/default.png';" alt="" />
               <!-- Social Info-->
               <div class="social-info">
-                <a href="#"><i class="fa fa-facebook"></i></a
-                ><a href="#"><i class="fa fa-twitter"></i></a
-                ><a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a
+                  href="#"><i class="fa fa-linkedin"></i></a>
               </div>
             </div>
             <!-- Team Details-->
             <div class="single_advisor_details_info">
-              <h6 style="text-transform: uppercase">{{ requests.nameB }}</h6>
+              <h6 style="text-transform: uppercase"><strong>{{requests.nameB}}</strong></h6>
               <p class="designation">
                 {{ requests.created_at.toString().substring(0, 10) }}
               </p>
 
               <div style="margin-top: 10px">
-                <a
-                  (click)="profile(requests)"
-                  style="margin-right: 10px"
-                  class="btn btn-primary btn-sm"
-                  ><img
-                    src="assets/icons/eye.png"
-                    style="max-height: 1.2em"
-                    alt="See note"
-                /></a>
-                <a
-                  (click)="accept(requests)"
-                  style="margin-right: 10px"
-                  class="btn btn-success btn-sm"
-                  ><img
-                    src="assets/icons/check.png"
-                    style="max-height: 1.2em"
-                    alt="See note"
-                /></a>
-                <a (click)="reject(requests)" class="btn btn-danger btn-sm"
-                  ><img
-                    src="assets/icons/cross.png"
-                    style="max-height: 1.2em"
-                    alt="See note"
-                /></a>
+                <a (click)="profile(requests)" style="margin-right: 10px" class="btn btn-primary btn-sm"><i
+                    class="fa-solid fa-eye fa-lg" style="color: #ffffff"></i></a>
+                <a (click)="accept(requests)" style="margin-right: 10px" class="btn btn-success btn-sm"><i
+                    class="fa-solid fa-check fa-lg" style="color: #ffffff"></i></a>
+                <a (click)="reject(requests)" class="btn btn-danger btn-sm"><i class="fa-solid fa-cancel fa-lg"
+                    style="color: #ffffff"></i></a>
               </div>
             </div>
           </div>
