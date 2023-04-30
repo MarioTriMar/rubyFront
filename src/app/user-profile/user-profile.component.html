@@ -68,6 +68,7 @@
                 <p>{{ note.text.substring(0, 25) }}.....</p>
                 <img style="width: 90%" src="{{ note.image }}" />
               </div>
+              <button class="btn btn-success" (click)="requestNote(note)">Request note</button>
             </div>
           </div>
         </div>

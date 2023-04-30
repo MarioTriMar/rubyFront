@@ -17,7 +17,7 @@ export class NoteRequestsComponent implements OnInit {
     this.getRequests()
   }
   getRequests(){
-    this.noteService.getAllNoteRequests(localStorage.getItem("idUser")!).subscribe(data=>{
+    this.noteService.getAllNoteRequests(localStorage.getItem("username")!).subscribe(data=>{
       this.noteRequests=(data)
     },error=>{
       console.log(error)
@@ -32,7 +32,7 @@ export class NoteRequestsComponent implements OnInit {
   acceptRequest(request:any){
     
     
-    this.noteService.acceptRequest(request.noteRequest._id.$oid).subscribe(data=>{
+    this.noteService.acceptRequest(request.request._id.$oid).subscribe(data=>{
       alert("Note accepted")
       this.router.navigate(['/noteRequests'])
     },error=>{
@@ -43,7 +43,7 @@ export class NoteRequestsComponent implements OnInit {
   rejectRequest(request:any){
     
     
-    this.noteService.rejectRequest(request.noteRequest._id.$oid).subscribe(data=>{
+    this.noteService.rejectRequest(request.request._id.$oid).subscribe(data=>{
       alert("Note rejected")
       this.router.navigate(['/noteRequests'])
     },error=>{
