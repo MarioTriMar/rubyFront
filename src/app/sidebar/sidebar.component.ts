@@ -64,6 +64,9 @@ export class SidebarComponent implements OnInit {
       console.log(error)
     })
   }
+  sharedNotes(){
+    this.router.navigate(['/mySharedNotes'])
+  }
   decodedImage(image: string) {
     let decodedString = atob(image);
     let byteCharacters = decodedString.split('').map(char => char.charCodeAt(0));

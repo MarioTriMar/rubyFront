@@ -95,25 +95,17 @@
         </button>
         <button
           (click)="updateNote()"
-          *ngIf="!creation && update"
+          *ngIf="!creation && update "
           type="button"
           class="btn btn--radius-2 btn--blue-2"
           style="margin-right: 10px"
         >
           <small class="font-weight-bold">Update Note</small>
         </button>
-        <button
-          (click)="shareNote()"
-          *ngIf="!creation && update && !isAdmin"
-          type="button"
-          class="btn btn--radius-2 btn--orange"
-          style="margin-right: 10px"
-        >
-          <small class="font-weight-bold">Share Note</small>
-        </button>
+        
         <button
           (click)="deleteNote()"
-          *ngIf="!creation && update"
+          *ngIf="!creation && update && owner"
           type="button"
           class="btn btn--radius-2 btn--red"
           style="margin-right: 10px"

@@ -19,6 +19,7 @@ export class NoteCreationComponent implements OnInit {
   isAdmin:boolean;
   creation: boolean;
   update: boolean;
+  owner: boolean;
   selectedFile: File;
   image: File;
 
@@ -50,9 +51,14 @@ export class NoteCreationComponent implements OnInit {
     } else if (sessionStorage.getItem("type") == "Update") {
       this.creation = false;
       this.update = true;
+      this.owner=true;
       this.loadNote(sessionStorage.getItem("idNote")!)
       console.log(this.note)
-    } else {
+    }else if(sessionStorage.getItem("type")=="Shared"){ 
+      this.update=true;
+      this.creation=false;
+      this.owner=false;
+    }else {
       console.log(sessionStorage.getItem("idNote")!)
       this.creation = false
       this.update = false
@@ -141,10 +147,6 @@ export class NoteCreationComponent implements OnInit {
       console.log(error);
     })
   }
-  shareNote() {
-    console.log("click")
-    localStorage.setItem("idNote", this.note._id.$oid)
-    this.router.navigate(['/shareNote'])
-  }
+  
 
 }

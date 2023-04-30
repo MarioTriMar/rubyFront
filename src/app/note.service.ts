@@ -77,5 +77,8 @@ export class NoteService {
   getAllSharedNotes() {
     return this.httpClient.get<any>(this.baseURL + "get_AllNotesShared");
   }
+  getAllSharedNotesByUserId(userId:string){
+    return this.httpClient.get<any>(this.baseURL+"get_AllSharedNotesByUserId?userId=" + userId);
+  }
   
 }

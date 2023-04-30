@@ -31,7 +31,7 @@ export class NoteRequestsComponent implements OnInit {
   }
   acceptRequest(request:any){
     
-    
+    console.log(request)
     this.noteService.acceptRequest(request.request._id.$oid).subscribe(data=>{
       alert("Note accepted")
       this.router.navigate(['/noteRequests'])

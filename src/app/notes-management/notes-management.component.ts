@@ -23,12 +23,13 @@ export class NotesManagementComponent implements OnInit {
   ngOnInit(): void {
     if (this.tipoUsuario == "user") {
       this.getAllNotesByUserId()
-    } else {
+    }else {
       this.isadmin = true
       this.getAllNotes()
     }
     this.assingImage();
   }
+  
 
   assingImage() {
     for (let i = 0; i < this.notes.length; i++) {
@@ -66,11 +67,7 @@ export class NotesManagementComponent implements OnInit {
     })
 
   }
-  shareNote(note: Note) {
-    console.log("click")
-    localStorage.setItem("idNote", note._id.$oid)
-    this.router.navigate(['/shareNote'])
-  }
+  
   createNote() {
     sessionStorage.setItem("type", "Creation")
     this.router.navigate(['/noteCreation'])
