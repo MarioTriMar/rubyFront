@@ -56,8 +56,10 @@ export class UserProfileComponent implements OnInit {
       if(localStorage.getItem("profileType")=="applicant"){
         this.getRequest(localStorage.getItem("idUser")!,this.user._id.$oid)
       }
+      if(localStorage.getItem("profileType")=="friends"){
+        this.getAllNotesByUserId(this.user.username)
+      }
       
-      this.getAllNotesByUserId(this.user.username)
     },error =>{
       console.log(error)
     })

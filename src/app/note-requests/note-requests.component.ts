@@ -19,6 +19,7 @@ export class NoteRequestsComponent implements OnInit {
   getRequests(){
     this.noteService.getAllNoteRequests(localStorage.getItem("username")!).subscribe(data=>{
       this.noteRequests=(data)
+      console.log(this.noteRequests)
     },error=>{
       console.log(error)
     })

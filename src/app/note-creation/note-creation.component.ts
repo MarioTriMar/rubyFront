@@ -58,6 +58,7 @@ export class NoteCreationComponent implements OnInit {
       this.update=true;
       this.creation=false;
       this.owner=false;
+      this.loadNote(sessionStorage.getItem("idNote")!)
     }else {
       console.log(sessionStorage.getItem("idNote")!)
       this.creation = false

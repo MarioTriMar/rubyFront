@@ -7,29 +7,59 @@
       <div class="row" style="background-color:#f0f0f0; height: 100%; margin-left: 0px;">
         
         <div  style="margin-top: 10px;"class="col-lg-4 row-cards" *ngFor="let request of noteRequests">
-            <div class="col-md-11" style="margin: auto;" >
-                <div class="card p-3 mb-2" style="max-height: 450px;">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <img class="img-card" src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png">
-                            <div class="ms-2 c-details">
-                                <h6 class="mb-0">{{request.user.username}}</h6> <span>{{request.note.created_at.toString().substring(0,10)}}</span>
-                            </div>                            </div>
-                        <div class="badge"> <span>{{request.note.tag}}</span> </div>
-                    </div>
-                    <div class="mt-5">
-                        <h3 class="heading">{{request.note.title}}</h3>
-                        <p>{{request.note.text.substring(0,25)}}.....</p>
-                        <img style="width: 90%;"src={{request.note.image}}>
-                    </div>
-                    <div style="display: flex; flex-wrap: wrap; margin: auto; margin-top: 10px;">
-                        <button (click)="seeNote(request.note)" class="btn btn-primary" style="margin-right: 10px;">See note</button>
-                        <button (click)="acceptRequest(request)"class="btn btn-success" style="margin-right: 10px;">Accept</button>
-                        <button (click)="rejectRequest(request)" class="btn btn-danger">Reject</button>
-                    </div>
-                    
-                    
+            <div class="card" style="text-align: center">
+                <div style="text-align: center">
+                  <img class="card-img-top" src="{{request.note.image}}" alt="Card image cap" />
                 </div>
+    
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <strong>{{ request.note.title }}</strong>
+                  </h4>
+                  <p class="card-text">{{ request.note.text }}</p>
+                </div>
+    
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col">
+                        <h6>
+                          <span class="badge badge-primary"><i class="fa-solid fa-tag fa-lg" style="color: #ffffff;margin-right:5px"></i>{{ request.note.tag }}</span>
+                        </h6>
+                      </div>
+                      <div class="col">
+                        <h6>
+                          <span class="badge badge-dark"><i class="fa-solid fa-calendar fa-lg" style="color: #ffffff;margin-right:5px"></i>{{
+                            request.note.created_at.toString().substring(0, 10)
+                            }}</span>
+                        </h6>
+                      </div>
+                      <div class="col">
+                        <h6>
+                          <span class="badge badge-info"><i class="fa-solid fa-code-pull-request" style="color: #ffffff;margin-right:5px"></i>{{
+                            request.note.idUser
+                            }}</span>
+                        </h6>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="card-body" style="text-align: center">
+                  <button type="button" class="btn btn-primary" style="margin: 10px;text-align:center"
+                  (click)="seeNote(request.note)">
+                    <i class="fa-solid fa-eye fa-lg" style="color: #ffffff"></i>
+                  </button>
+                  
+                  <button type="button" class="btn btn-success" style="margin: 10px;text-align:center"
+                  (click)="acceptRequest(request)">
+                    <i class="fa-solid fa-check fa-lg" style="color: #ffffff"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" style="margin: 10px;text-align:center"
+                  button (click)="rejectRequest(request)">
+                    <i class="fa-solid fa-cancel fa-lg" style="color: #ffffff"></i>
+                  </button>
+                </div>
+              </div>
             </div>
         </div>
     </div>
