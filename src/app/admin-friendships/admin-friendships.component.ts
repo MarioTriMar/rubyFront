@@ -29,9 +29,7 @@ export class AdminFriendshipsComponent implements OnInit {
     if(localStorage.getItem("tokenSessionTipo")!="admin"){
       this.router.navigate(['/home'])
     }else{
-      this.loadFriendships()
-      this.nextPage();
-      this.pageLengthChange(5);
+      this.loadFriendships();
     }
   }
 
@@ -45,7 +43,9 @@ export class AdminFriendshipsComponent implements OnInit {
   */
   loadFriendships(){
     this.userService.getAllFriendships().subscribe(data=>{
-      this.friendships=data
+      this.friendships=data;
+      this.pageLengthChange(5);
+      this.display();
     },error=>{
       console.log(error)
     })
@@ -64,7 +64,7 @@ export class AdminFriendshipsComponent implements OnInit {
       this.ngOnInit();
     },error=>{
       console.log(error)
-      alert("nose ha borrao puto")
+      alert("ERROR: Friendship not deleted")
     })
   }
   pageLengthChange(value: any) {
