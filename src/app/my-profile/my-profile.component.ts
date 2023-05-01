@@ -72,8 +72,9 @@ export class MyProfileComponent implements OnInit {
       }
       this.userService.updatePassword(info).subscribe(data=>{
         console.log(data)
+        alert("Password has been changed successfully!")
       },error=>{
-        console.log(error)
+        alert(error.error.message)
       })
     }else{
       alert("Passwords do not match")

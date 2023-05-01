@@ -23,7 +23,7 @@
             <div class="name">Tag</div>
             <div class="value">
               <div class="input-group">
-                <select [disabled]="!creation && !update" class="form-control" [(ngModel)]="note.tag">
+                <select [disabled]="!creation && !update" class="form-control" [(ngModel)]="note.tag" [ngModelOptions]="{standalone: true}">
                   <option value="Shopping">Shopping</option>
                   <option value="Work">Work</option>
                   <option value="Diary" selected>Diary</option>

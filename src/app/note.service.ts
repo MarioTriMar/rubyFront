@@ -86,5 +86,8 @@ export class NoteService {
   getAllPossibleNotes(userId: string, collectionId: string) {
     return this.httpClient.get<any>(this.baseURL + "get_AllPossibleNotes?userId=" + userId + "&collectionId=" + collectionId);
   }
+  getAllCollections() {
+    return this.httpClient.get<any>(this.baseURL + "get_allCollections");
+  }
 
 }

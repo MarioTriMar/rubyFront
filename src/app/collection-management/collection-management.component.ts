@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../note.service';
 import { Collection } from '../collection';
 import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-collection-management',
@@ -10,16 +11,25 @@ import { Router } from '@angular/router';
 })
 export class CollectionManagementComponent implements OnInit {
   collections: Collection[];
+  user:User;
+  isAdmin = false
   note: Collection = new Collection();
   name:string;
-  constructor(private noteService:NoteService,private router:Router) { }
+  constructor(private noteService:NoteService, private router:Router) { }
 
   //Este es el primer componente que se tiene que cargar al hacer click en collections
   ngOnInit(): void {
     if(!localStorage.getItem("idUser")){
       window.location.href = "home";
     }
-    this.getCollections()
+    if (localStorage.getItem("tokenSessionTipo") == "admin"){
+      this.isAdmin = true;
+      this.getAllCollections();
+    }else{
+      this.isAdmin = false;
+      this.getCollections();   
+    }
+    
   }
   getCollections(){
     this.noteService.getCollectionsOfUser(localStorage.getItem("idUser")!).subscribe(data=>{
@@ -42,6 +52,15 @@ export class CollectionManagementComponent implements OnInit {
     localStorage.setItem("collectionId",collection._id.$oid)
     this.router.navigate(['/collection'])
   }
+  getAllCollections(){
+    this.noteService.getAllCollections().subscribe(data=>{
+      console.log(data)
+      this.collections = data;
+    },error=>{
+      console.log(error)
+    })
+  }
+
   deleteCollection(collection:Collection){
     this.noteService.deleteCollection(collection._id.$oid).subscribe(data=>{
       console.log(data)

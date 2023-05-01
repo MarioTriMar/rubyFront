@@ -4,6 +4,13 @@
     </div>
     <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color: #f0f0f0">
         <app-head-nav></app-head-nav>
+        <div class="input-group rounded" style="text-align:center">
+            <input id="username" type="text" placeholder="Collection Name" type="search" class="form-control rounded" style="width: 60px;"
+                aria-label="Search" aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-add"></i>
+            </span>
+        </div>
         <div class="container mt-5">
             <table class="table table-borderless table-responsive card-1 p-4">
                 <thead>
@@ -42,21 +49,23 @@
                         </td>
                         <td>
                             <div class="p-2">
-                                <span class="d-block font-weight-bold">{{collection.created_at.toString().substring(0,10)}}</span>
+                                <span
+                                    class="d-block font-weight-bold">{{collection.created_at.toString().substring(0,10)}}</span>
                                 <small>{{collection.created_at.toString().substring(11, 19)}}</small>
                             </div>
                         </td>
                         <td>
                             <div class="p-2">
-                                <span class="d-block font-weight-bold">{{collection.updated_at.toString().substring(0,10)}}</span>
+                                <span
+                                    class="d-block font-weight-bold">{{collection.updated_at.toString().substring(0,10)}}</span>
                                 <small>{{collection.updated_at.toString().substring(11, 19)}}</small>
                             </div>
                         </td>
                         <td>
                             <div class="p-2 icons">
-                                <i (click)="deleteCollection(collection)"class="fa-solid fa-trash-can" style="color: #c80000;"></i>
-                                <i (click)="loadCollection(collection)" class="fa fa-eye"></i>
-                                <i class="fa fa-share"></i>
+                                <i (click)="deleteCollection(collection)" class="fa-solid fa-trash-can"
+                                    style="color: #c80000;"></i>
+                                <i *ngIf="!isAdmin" (click)="loadCollection(collection)" class="fa fa-eye"></i>
                             </div>
                         </td>
                     </tr>
