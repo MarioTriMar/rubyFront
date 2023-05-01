@@ -27,7 +27,6 @@ export class NotesManagementComponent implements OnInit {
       this.isadmin = true
       this.getAllNotes()
     }
-    this.assingImage();
   }
   
 
@@ -40,7 +39,8 @@ export class NotesManagementComponent implements OnInit {
   getAllNotesByUserId() {
     this.noteService.getAllNotesByUserId(localStorage.getItem("username")!).subscribe(data => {
       console.log(data)
-      this.notes = data
+      this.notes = data;
+      this.assingImage();
     }, error => {
       console.log(error)
     })
@@ -48,7 +48,8 @@ export class NotesManagementComponent implements OnInit {
   getAllNotes() {
     this.noteService.getAllNotes().subscribe(data => {
       console.log(data)
-      this.notes = data
+      this.notes = data;
+      this.assingImage();
     }, error => {
       console.log(error)
     })
