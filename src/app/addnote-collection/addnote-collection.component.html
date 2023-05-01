@@ -1,1 +1,60 @@
-<p>addnote-collection works!</p>
+<div class="d-flex" id="content-wrapper">
+    <div id="sidebar-container" class="border-right sidebar-container">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color: #f0f0f0">
+      <app-head-nav></app-head-nav>
+      <div class="container vh-100">
+        <div class="row vh-100">
+          <div style="margin-top: 10px" class="col-lg-4 row-cards" *ngFor="let note of notes">
+            <div class="card" style="text-align: center">
+              <div style="text-align: center">
+                <img class="card-img-top" src="{{note.image}}" alt="Card image cap" />
+              </div>
+  
+              <div class="card-body">
+                <h4 class="card-title">
+                  <strong>{{ note.title }}</strong>
+                </h4>
+                <p class="card-text">{{ note.text.toString().substring(0, 100) }}</p>
+              </div>
+  
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <h6>
+                        <span class="badge badge-primary"><i class="fa-solid fa-tag fa-lg" style="color: #ffffff;margin-right:5px"></i>{{ note.tag }}</span>
+                      </h6>
+                    </div>
+                    <div class="col">
+                      <h6>
+                        <span class="badge badge-dark"><i class="fa-solid fa-calendar fa-lg" style="color: #ffffff;margin-right:5px"></i>{{
+                          note.created_at.toString().substring(0, 10)
+                          }}</span>
+                      </h6>
+                    </div>
+                    <div class="col" >
+                      <h6>
+                        <span class="badge badge-info"><i class="fa-solid fa-user" style="color: #ffffff;margin-right:5px"></i>{{
+                          note.idUser
+                          }}</span>
+                      </h6>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="card-body" style="text-align: center">
+                <button (click)="addNote(note)" type="button" class="btn btn-success" style="margin: 10px;text-align:center"
+                  >
+                  <i class="fa-solid fa-plus fa-lg" style="color: #ffffff"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
