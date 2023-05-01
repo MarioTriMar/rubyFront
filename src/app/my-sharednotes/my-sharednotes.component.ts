@@ -17,6 +17,9 @@ export class MySharednotesComponent implements OnInit {
   constructor(private router:Router, private noteService:NoteService) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.getAllSharedNotes()
   }
   getAllSharedNotes() {

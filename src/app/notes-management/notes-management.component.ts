@@ -21,6 +21,10 @@ export class NotesManagementComponent implements OnInit {
 
   constructor(private noteService: NoteService, private router: Router) { }
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
+
     if (this.tipoUsuario == "user") {
       this.getAllNotesByUserId()
     }else {

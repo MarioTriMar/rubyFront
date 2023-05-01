@@ -45,6 +45,9 @@ export class UsersManagementComponent implements OnInit {
   constructor(private usersService:UserService, private noteService:NoteService, private router:Router) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.getAllUsers()
     this.nextPage();
     this.pageLengthChange(5);

@@ -14,6 +14,9 @@ export class NoteRequestsComponent implements OnInit {
   constructor(private noteService:NoteService, private router:Router) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.getRequests()
   }
   getRequests(){

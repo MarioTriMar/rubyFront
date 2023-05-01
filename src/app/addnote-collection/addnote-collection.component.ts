@@ -17,6 +17,9 @@ export class AddnoteCollectionComponent implements OnInit {
   constructor(private noteService:NoteService) { }
   //componente para añadir nota a la coleccion
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.loadNotes()
   }
 

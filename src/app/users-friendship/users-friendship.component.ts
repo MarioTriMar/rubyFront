@@ -16,6 +16,9 @@ export class UsersFriendshipComponent implements OnInit {
   constructor(private usersService:UserService, private router:Router) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.getAllUsers()
   }
   getAllUsers(){

@@ -40,6 +40,9 @@ export class NoteCreationComponent implements OnInit {
   constructor(private noteService: NoteService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     if (this.tipoUsuario == "admin") {
       this.isAdmin = true;
     }

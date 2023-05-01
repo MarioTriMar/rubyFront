@@ -28,6 +28,9 @@ export class MyProfileComponent implements OnInit {
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.state=true
     this.loadUser()
   }

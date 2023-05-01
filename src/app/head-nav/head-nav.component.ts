@@ -14,6 +14,9 @@ export class HeadNavComponent implements OnInit {
   user:User;
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.loadUser();
   }
   loadUser(){

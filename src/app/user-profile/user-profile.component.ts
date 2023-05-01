@@ -23,6 +23,9 @@ export class UserProfileComponent implements OnInit {
   constructor(private usersService:UserService, private noteService:NoteService, private router:Router) { }
   notes: Note[];
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.loadUser()
     console.log(localStorage.getItem("profileType"))
     if (localStorage.getItem("profileType")=="applicant"){

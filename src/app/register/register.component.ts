@@ -16,6 +16,9 @@ export class RegisterComponent implements OnInit {
   constructor(private userService:UserService, private router:Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
   }
   register(){
     let valido=true;

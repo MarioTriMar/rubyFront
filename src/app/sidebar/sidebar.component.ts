@@ -19,6 +19,9 @@ export class SidebarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.loadUser();
   }
   gestionNotas(){

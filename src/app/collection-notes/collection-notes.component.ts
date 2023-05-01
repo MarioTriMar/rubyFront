@@ -14,6 +14,9 @@ export class CollectionNotesComponent implements OnInit {
 
   //Este componente carga todas las notas de la coleccion
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.loadNotes()
   }
   loadNotes(){

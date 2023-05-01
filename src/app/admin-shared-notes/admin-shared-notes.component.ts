@@ -14,6 +14,9 @@ export class AdminSharedNotesComponent implements OnInit {
   constructor(private router:Router, private noteService:NoteService) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     if(localStorage.getItem("tokenSessionTipo")!="admin"){
       this.router.navigate(['/home'])
     }else{

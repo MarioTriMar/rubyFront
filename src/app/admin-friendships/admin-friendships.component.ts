@@ -23,6 +23,9 @@ export class AdminFriendshipsComponent implements OnInit {
   constructor(private router:Router, private userService:UserService) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     if(localStorage.getItem("tokenSessionTipo")!="admin"){
       this.router.navigate(['/home'])
     }else{

@@ -16,6 +16,9 @@ export class CollectionManagementComponent implements OnInit {
 
   //Este es el primer componente que se tiene que cargar al hacer click en collections
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.getCollections()
   }
   getCollections(){
