@@ -14,9 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
-    if(!localStorage.getItem("idUser")){
-      window.location.href = "home";
-    }
+    
   }
   login(){
     this.userService.login(this.email, this.password).subscribe(data=>{
