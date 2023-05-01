@@ -71,6 +71,9 @@ export class NoteService {
   deleteNoteOfCollection(noteId: string, collectionId:string) {
     return this.httpClient.delete(this.baseURL + "reject_noteRequest?collectionId=" + collectionId+"&noteId="+noteId)
   }
+  deleteCollection(collectionId:string) {
+    return this.httpClient.delete(this.baseURL + "delete_collection?collectionId=" + collectionId)
+  }
   addNoteToCollection(collectionId: string, noteId: string) {
     return this.httpClient.put(this.baseURL + "add_noteToCollection?collectionId=" + collectionId,"&noteId="+noteId)
   }

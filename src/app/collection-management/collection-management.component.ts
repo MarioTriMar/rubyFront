@@ -39,4 +39,13 @@ export class CollectionManagementComponent implements OnInit {
     localStorage.setItem("collectionId",collection._id.$oid)
     this.router.navigate(['/collection'])
   }
+  deleteCollection(collection:Collection){
+    this.noteService.deleteCollection(collection._id.$oid).subscribe(data=>{
+      console.log(data)
+      alert("Borrado")
+      this.ngOnInit();
+    },error=>{
+      console.log(error)
+    })
+  }
 }
