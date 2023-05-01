@@ -4,28 +4,22 @@
   </div>
   <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color: #f0f0f0">
     <app-head-nav> </app-head-nav>
-    <div class="container vh-100" >
-      <div class="row vh-100" >
+    <div class="container vh-100">
+      <div class="row vh-100">
         <div>
           <div class="user-data">
-            <h4>{{ user.username }}</h4>
+            <img class="img-account-profile rounded-circle mb-5" src="{{user.image}}"
+              style="height:200px; width:200px; margin-top:20px" />
+            <h4 style="text-transform: uppercase;"><strong>{{ user.username}}</strong></h4>
             <h4>{{ user.email }}</h4>
-            <img
-              style="height: 120px; width: 180px"
-              src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png"
-            />
           </div>
           <div *ngIf="!hasRequested && !areFriends" class="user-data">
-            <button (click)="sendFriendshipRequest()" class="btn btn-success">
+            <button (click)="sendFriendshipRequest()" class="btn btn-success"><i class="fa-solid fa-paper-plane"></i>
               Send friendship request
             </button>
           </div>
           <div *ngIf="hasRequested && !areFriends" class="user-data">
-            <button
-              style="margin-right: 10px"
-              (click)="accept()"
-              class="btn btn-success"
-            >
+            <button style="margin-right: 10px" (click)="accept()" class="btn btn-success">
               Accept request
             </button>
             <button (click)="reject()" class="btn btn-danger">
@@ -39,34 +33,32 @@
             <p>Friend request waiting to be accepted/rejected</p>
           </div>
         </div>
-        <div
-          style="margin-top: 10px"
-          class="col-lg-4 row-cards"
-          *ngFor="let note of notes"
-        >
-          <div class="container vh-100" style="margin-top: 10px" >
+        <div style="margin-top: 10px" class="col-lg-4 row-cards" *ngFor="let note of notes">
+          <div class="container vh-100" style="margin-top: 10px">
             <div class="row vh-100" style="max-height: 450px">
               <div class="d-flex justify-content-between">
               </div>
               <div class="mt-5">
                 <img style="width: 100%" src="{{ note.image }}" />
               </div>
-              
+
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                   <div style="text-align: center;">
                     <h3 class="heading"><strong>{{ note.title }}</strong></h3>
-                    <p>{{ note.text.substring(0, 25) }}.....</p>
+                    <p>{{ note.text.substring(0, 100) }}</p>
                   </div>
                   <div class="row" style="text-align: center;">
                     <div class="col">
                       <h6>
-                        <span class="badge badge-primary"><i class="fa-solid fa-tag fa-lg" style="color: #ffffff;margin-right:10px"></i>{{ note.tag }}</span>
+                        <span class="badge badge-primary"><i class="fa-solid fa-tag fa-lg"
+                            style="color: #ffffff;margin-right:10px"></i>{{ note.tag }}</span>
                       </h6>
                     </div>
                     <div class="col">
                       <h6>
-                        <span class="badge badge-dark"><i class="fa-solid fa-calendar fa-lg" style="color: #ffffff;margin-right:10px"></i>{{
+                        <span class="badge badge-dark"><i class="fa-solid fa-calendar fa-lg"
+                            style="color: #ffffff;margin-right:10px"></i>{{
                           note.created_at.toString().substring(0, 10)
                           }}</span>
                       </h6>
@@ -75,9 +67,7 @@
                   </div>
                 </li>
               </ul>
-              
             </div>
-            
           </div>
         </div>
       </div>

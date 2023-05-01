@@ -16,6 +16,7 @@ import { CollectionManagementComponent } from './collection-management/collectio
 import { CollectionNotesComponent } from './collection-notes/collection-notes.component';
 import { AddnoteCollectionComponent } from './addnote-collection/addnote-collection.component';
 import { MySharednotesComponent } from './my-sharednotes/my-sharednotes.component';
+import { AdminFriendshipsComponent } from './admin-friendships/admin-friendships.component';
 
 const routes: Routes = [
   {path : 'noteManagement',component:NotesManagementComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'collectionManagement', component:CollectionManagementComponent},
   {path: 'collection', component:CollectionNotesComponent},
   {path: 'addNoteToCollection', component:AddnoteCollectionComponent},
-  {path: 'mySharedNotes', component:MySharednotesComponent}
+  {path: 'mySharedNotes', component:MySharednotesComponent},
+  {path: 'adminFriendships', component:AdminFriendshipsComponent}
 ];
 
 @NgModule({

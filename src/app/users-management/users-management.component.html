@@ -37,7 +37,6 @@
                   </tbody>
                 </table>
 
-
                 <span>
                   <button class="badge badge-light" style="color: black;margin-right:5px" (click)="PrevPage()"><a
                       class="page-link">Previous</a></button>
@@ -49,6 +48,7 @@
                   <button class="badge badge-light" style="color: black;margin-right:5px" (click)="nextPage()"><a
                       class="page-link">Next</a></button>
                 </span>
+
                 <div class="clearfix">
                 </div>
               </div>
@@ -96,7 +96,7 @@
             <div style="text-align:center">
               <button [disabled]="state" class="btn btn-warning" style="margin: 10px; color:white"
                 (click)="updateUser(user)">
-                <i class="fa-solid fa-sd-card fa-lg" style="color: #ffffff;margin-right:10px"></i>Update
+                <i class="fa-solid fa-floppy-disk fa-lg" style="color: #ffffff;margin-right:10px"></i>Update
               </button>
               <button [disabled]="state" class="btn btn-danger" style="margin: 10px" (click)="deleteUser(user)">
                 <i class="fa-solid fa-trash-can fa-lg" style="color: #ffffff;margin-right:10px"></i>Delete

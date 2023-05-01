@@ -1,8 +1,4 @@
-<link
-  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-  rel="stylesheet"
-  id="bootstrap-css"
-/>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -19,27 +15,15 @@
           <div class="form-row">
             <div class="name">Note Title</div>
             <div class="value">
-              <input
-                [disabled]="!creation && !update"
-                name="full_name"
-                type="text"
-                [(ngModel)]="note.title"
-                class="input--style-6"
-                id="note-title"
-                placeholder="Note title here"
-                required
-              />
+              <input [disabled]="!creation && !update" name="full_name" type="text" [(ngModel)]="note.title"
+                class="input--style-6" id="note-title" placeholder="Note title here" required />
             </div>
           </div>
           <div class="form-row">
             <div class="name">Tag</div>
             <div class="value">
               <div class="input-group">
-                <select
-                  [disabled]="!creation && !update"
-                  class="form-control"
-                  [(ngModel)]="note.tag"
-                >
+                <select [disabled]="!creation && !update" class="form-control" [(ngModel)]="note.tag">
                   <option value="Shopping">Shopping</option>
                   <option value="Work">Work</option>
                   <option value="Diary" selected>Diary</option>
@@ -52,64 +36,38 @@
             <div class="name">Message</div>
             <div class="value">
               <div class="input-group">
-                <textarea
-                  [disabled]="!creation && !update"
-                  class="textarea--style-6"
-                  name="message"
-                  placeholder="Message of the note"
-                  [(ngModel)]="note.text"
-                  id="message"
-                ></textarea>
+                <textarea [disabled]="!creation && !update" class="textarea--style-6" name="message"
+                  placeholder="Message of the note" [(ngModel)]="note.text" id="message"></textarea>
               </div>
             </div>
           </div>
           <div class="form-row">
-            <div class="name">Upload CV</div>
+            <div class="name">image</div>
             <div class="value">
               <div class="input-group js-input-file">
-                <input
-                  class="input-file"
-                  type="file"
-                  accept="image/*"
-                  (change)="onFileSelected($event)"
-                  name="file_cv"
-                  id="file"
-                />
+                <input class="input-file" type="file" accept="image/*" (change)="onFileSelected($event)" name="file_cv"
+                  id="file" />
                 <label class="label--file" for="file">Choose file</label>
-                <span class="input-file__info">No file chosen</span>
               </div>
               <div class="label--desc">Upload an image.</div>
+              <img style="width: 50%;height:auto" src="{{note.image}}"
+                onerror="this.onerror=null;this.src='assets/default.png';" alt="" />
             </div>
           </div>
         </form>
       </div>
       <div class="card-footer" style="text-align: center">
-        <button
-          (click)="createNote()"
-          *ngIf="creation"
-          type="button"
-          class="btn btn--radius-2 btn--green"
-          style="margin-right: 10px"
-        >
+        <button (click)="createNote()" *ngIf="creation" type="button" class="btn btn--radius-2 btn--green"
+          style="margin-right: 10px">
           <small class="font-weight-bold">Save Note</small>
         </button>
-        <button
-          (click)="updateNote()"
-          *ngIf="!creation && update "
-          type="button"
-          class="btn btn--radius-2 btn--blue-2"
-          style="margin-right: 10px"
-        >
+        <button (click)="updateNote()" *ngIf="!creation && update " type="button" class="btn btn--radius-2 btn--blue-2"
+          style="margin-right: 10px">
           <small class="font-weight-bold">Update Note</small>
         </button>
-        
-        <button
-          (click)="deleteNote()"
-          *ngIf="!creation && update && owner"
-          type="button"
-          class="btn btn--radius-2 btn--red"
-          style="margin-right: 10px"
-        >
+
+        <button (click)="deleteNote()" *ngIf="!creation && update && owner" type="button"
+          class="btn btn--radius-2 btn--red" style="margin-right: 10px">
           <small class="font-weight-bold">Delete Note</small>
         </button>
       </div>

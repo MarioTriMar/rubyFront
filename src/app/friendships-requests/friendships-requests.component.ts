@@ -23,22 +23,17 @@ export class FriendshipsRequestsComponent implements OnInit {
     console.log(localStorage.getItem("idUser")!)
     this.usersService.getFriendshipsRequestByUserId(localStorage.getItem("idUser")!).subscribe(data=>{
       this.friendshipsRequests=data
-      for (let i = 0 ; i < this.friendshipsRequests.length; i++){
-        this.usersService.getUserById(this.friendshipsRequests[i].userA).subscribe(data=>{
-          this.user = data;
-          this.friends.push(this.user);
-        }, error=>{
-          console.log(error)
-        })
-      }
+      console.log(this.loadFriendshipRequests);
 
     }, error=>{
       console.log(error)
     })
   }
+
+
   profile(requests:any) {
     localStorage.setItem("requestId", requests._id.$oid)
-    localStorage.setItem("userProfile", requests.userA)
+    localStorage.setItem("userProfile", requests.userA._id.$oid)
     localStorage.setItem("profileType", "applicant")
     this.router.navigate(["/userProfile"])
   }
