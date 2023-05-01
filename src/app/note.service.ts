@@ -9,7 +9,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class NoteService {
- 
+
   private baseURL = "http://192.168.18.109:3000/api/"
   constructor(private httpClient: HttpClient) { }
   getAllNotesByUserId(idUser: string) {
@@ -24,7 +24,7 @@ export class NoteService {
     return this.httpClient.delete(this.baseURL + "delete_note?_id=" + note._id.$oid
     )
   }
-  deleteAllNotesByUserId(user:User) {
+  deleteAllNotesByUserId(user: User) {
     return this.httpClient.delete(this.baseURL + "delete_allNotesByUserId?idUser=" + user.username
     )
   }
@@ -58,33 +58,33 @@ export class NoteService {
   getCollectionsOfUser(idUser: string) {
     return this.httpClient.get<any>(this.baseURL + "get_collectionsOfUser?idUser=" + idUser);
   }
-  createCollection(name: string, idUser:string):Observable<any> {
-    let info={
-      "name":name,
-      "idUser":idUser
+  createCollection(name: string, idUser: string): Observable<any> {
+    let info = {
+      "name": name,
+      "idUser": idUser
     }
     return this.httpClient.post(this.baseURL + "create_collection", info)
   }
   getNotesOfCollection(collectionId: string) {
     return this.httpClient.get<any>(this.baseURL + "get_notesOfCollection?collectionId=" + collectionId);
   }
-  deleteNoteOfCollection(noteId: string, collectionId:string) {
-    return this.httpClient.delete(this.baseURL + "reject_noteRequest?collectionId=" + collectionId+"&noteId="+noteId)
+  deleteNoteOfCollection(noteId: string, collectionId: string) {
+    return this.httpClient.delete(this.baseURL + "reject_noteRequest?collectionId=" + collectionId + "&noteId=" + noteId)
   }
-  deleteCollection(collectionId:string) {
+  deleteCollection(collectionId: string) {
     return this.httpClient.delete(this.baseURL + "delete_collection?collectionId=" + collectionId)
   }
   addNoteToCollection(collectionId: string, noteId: string) {
-    return this.httpClient.put(this.baseURL + "add_noteToCollection?collectionId=" + collectionId,"&noteId="+noteId)
+    return this.httpClient.put(this.baseURL + "add_noteToCollection?collectionId=" + collectionId +"&noteId=" + noteId ,null)
   }
   getAllSharedNotes() {
     return this.httpClient.get<any>(this.baseURL + "get_AllNotesShared");
   }
-  getAllSharedNotesByUserId(userId:string){
-    return this.httpClient.get<any>(this.baseURL+"get_AllSharedNotesByUserId?userId=" + userId);
+  getAllSharedNotesByUserId(userId: string) {
+    return this.httpClient.get<any>(this.baseURL + "get_AllSharedNotesByUserId?userId=" + userId);
   }
-  getAllPossibleNotes(userId: string, collectionId:string) {
-    return this.httpClient.get<any>(this.baseURL+"get_AllPossibleNotes?userId=" + userId+"&collectionId="+collectionId);
+  getAllPossibleNotes(userId: string, collectionId: string) {
+    return this.httpClient.get<any>(this.baseURL + "get_AllPossibleNotes?userId=" + userId + "&collectionId=" + collectionId);
   }
-  
+
 }
