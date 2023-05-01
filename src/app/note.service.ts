@@ -69,7 +69,7 @@ export class NoteService {
     return this.httpClient.get<any>(this.baseURL + "get_notesOfCollection?collectionId=" + collectionId);
   }
   deleteNoteOfCollection(noteId: string, collectionId: string) {
-    return this.httpClient.delete(this.baseURL + "reject_noteRequest?collectionId=" + collectionId + "&noteId=" + noteId)
+    return this.httpClient.delete(this.baseURL + "delete_noteOfCollection?collectionId=" + collectionId + "&noteId=" + noteId)
   }
   deleteCollection(collectionId: string) {
     return this.httpClient.delete(this.baseURL + "delete_collection?collectionId=" + collectionId)

@@ -28,6 +28,7 @@ export class CollectionNotesComponent implements OnInit {
   deleteNoteOfCollection(note:Note){
     this.noteService.deleteNoteOfCollection(note._id.$oid, localStorage.getItem("collectionId")!).subscribe(data=>{
       console.log(data)
+      this.ngOnInit();
     },error=>{
       console.log(error)
     })
