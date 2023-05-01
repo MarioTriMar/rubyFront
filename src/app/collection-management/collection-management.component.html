@@ -4,10 +4,10 @@
     </div>
     <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color: #f0f0f0">
         <app-head-nav></app-head-nav>
-        <div class="input-group rounded" style="text-align:center">
-            <input id="username" type="text" placeholder="Collection Name" type="search" class="form-control rounded" style="width: 60px;"
-                aria-label="Search" aria-describedby="search-addon" />
-            <span class="input-group-text border-0" id="search-addon">
+        <div *ngIf="!isAdmin" class="input-group rounded" style="margin-top: 20px !important; margin-left: 12px !important; width: 500px !important;">
+            <input id="collectionName" type="text" placeholder="Add Collection" type="search" class="form-control rounded"
+                aria-label="Search" aria-describedby="search-addon" [(ngModel)]="collection.name"/>
+            <span class="input-group-text border-0" id="search-addon" (click)="createCollection()" >
                 <i class="fas fa-add"></i>
             </span>
         </div>

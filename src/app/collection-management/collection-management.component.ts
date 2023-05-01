@@ -14,7 +14,7 @@ export class CollectionManagementComponent implements OnInit {
   user:User;
   isAdmin = false
   note: Collection = new Collection();
-  name:string;
+  collection: Collection = new Collection();
   constructor(private noteService:NoteService, private router:Router) { }
 
   //Este es el primer componente que se tiene que cargar al hacer click en collections
@@ -41,7 +41,7 @@ export class CollectionManagementComponent implements OnInit {
   }
   //metodo que se ejecute cuando hagas click en el boton arriba del nav
   createCollection(){
-    this.noteService.createCollection(this.name, localStorage.getItem("idUser")!).subscribe(data=>{
+    this.noteService.createCollection(this.collection.name, localStorage.getItem("idUser")!).subscribe(data=>{
       console.log(data)
       this.getCollections()
     },error=>{
