@@ -10,7 +10,7 @@ import { User } from './user';
 })
 export class NoteService {
  
-  private baseURL = "http://26.199.39.139:3000/api/"
+  private baseURL = "http://192.168.18.109:3000/api/"
   constructor(private httpClient: HttpClient) { }
   getAllNotesByUserId(idUser: string) {
     return this.httpClient.get<Note[]>(this.baseURL + "get_allNotesByUserId?idUser=" + idUser);
@@ -82,6 +82,9 @@ export class NoteService {
   }
   getAllSharedNotesByUserId(userId:string){
     return this.httpClient.get<any>(this.baseURL+"get_AllSharedNotesByUserId?userId=" + userId);
+  }
+  getAllPossibleNotes(userId: string, collectionId:string) {
+    return this.httpClient.get<any>(this.baseURL+"get_AllPossibleNotes?userId=" + userId+"&collectionId="+collectionId);
   }
   
 }
