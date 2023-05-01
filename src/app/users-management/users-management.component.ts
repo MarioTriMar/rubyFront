@@ -48,9 +48,7 @@ export class UsersManagementComponent implements OnInit {
     if(!localStorage.getItem("idUser")){
       window.location.href = "home";
     }
-    this.getAllUsers()
-    this.nextPage();
-    this.pageLengthChange(5);
+    this.getAllUsers();
     
   }
   getAllUsers(){
@@ -58,8 +56,14 @@ export class UsersManagementComponent implements OnInit {
       console.log(data)
       this.users=data
       for (let i = 0 ; i < this.users.length; i++){
-        this.users[i].image = this.decodedImage(this.users[i].image);
+        try{
+          this.users[i].image = this.decodedImage(this.users[i].image);
+        }catch(error){
+        }
+        
       }
+      this.pageLengthChange(5);
+      this.display();
     },error =>{
       console.log(error)
     })

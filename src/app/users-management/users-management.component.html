@@ -40,11 +40,6 @@
                 <span>
                   <button class="badge badge-light" style="color: black;margin-right:5px" (click)="PrevPage()"><a
                       class="page-link">Previous</a></button>
-                  <button class="badge badge-primary" *ngFor="let usuario of pageArray">
-                    <a class="page-item" #pageNo (click)="goToPage(pageNo.innerHTML)" style="margin-right:3px;">
-                      {{pageNo}}
-                    </a>
-                  </button>
                   <button class="badge badge-light" style="color: black;margin-right:5px" (click)="nextPage()"><a
                       class="page-link">Next</a></button>
                 </span>
