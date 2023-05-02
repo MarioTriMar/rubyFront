@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
+    
   }
   login(){
     this.userService.login(this.email, this.password).subscribe(data=>{

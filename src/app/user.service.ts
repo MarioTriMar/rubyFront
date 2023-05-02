@@ -8,7 +8,7 @@ import { Friendship } from './friendship';
 })
 export class UserService {
   
-  private baseURL = "http://localhost:3000/api/"
+  private baseURL = "http://192.168.18.109:3000/api/"
   constructor(private httpClient:HttpClient) { }
 
   addUser(user: User):Observable<any>{
@@ -23,8 +23,13 @@ export class UserService {
   updateUser(user: User):Observable<any> {
     return this.httpClient.put(this.baseURL+"update_user?_id="+user._id.$oid, user)
   }
+  deleteUser(user: User):Observable<any> {
+    return this.httpClient.delete(this.baseURL+"delete_user?_id="+user._id.$oid)
+  }
+  updatePassword(info:any):Observable<any>{
+    return this.httpClient.put(this.baseURL+"update_password?userId="+info.userId, info)
+  }
   getUserById(userId: string){
- 
     return this.httpClient.get<User>(this.baseURL+"get_userById?_id="+userId)
   }
   getUsersContaining(username:string){
@@ -47,5 +52,14 @@ export class UserService {
   }
   getFriendshipRequestOfUsers(userA:string, userB:string){
     return this.httpClient.get<any>(this.baseURL+"get_FriendshipRequestOfUsers?userA="+userA+"&userB="+userB);
+  }
+  getAllFriends(userId:string){
+    return this.httpClient.get<any[]>(this.baseURL+"get_allFriends?_id="+userId);
+  }
+  getAllFriendships(){
+    return this.httpClient.get<any[]>(this.baseURL+"get_allFriendships");
+  }
+  deleteFriendship(idRequest: string):Observable<any> {
+    return this.httpClient.delete(this.baseURL+"reject_friendshipRequest?_id=" +idRequest)
   }
 }

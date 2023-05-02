@@ -186,8 +186,8 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-size: 36px; }
   
   .main {
-    background: #f8f8f8;
-    padding: 150px 0; }
+    background: #6dabe4;
+    padding: 108px 0; }
   
   .clear {
     clear: both; }
@@ -263,7 +263,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     margin: 0 55px; }
   
   .form-title {
-    margin-bottom: 33px; }
+    margin-bottom: 33px;
+    font-family: 'Courier New';
+    text-align: center; }
   
   .signup-image {
     margin-top: 45px; }

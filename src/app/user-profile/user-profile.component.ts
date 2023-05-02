@@ -6,6 +6,7 @@ import { NoteService } from '../note.service';
 import { Note } from '../note';
 import { Friendship } from '../friendship';
 import { end } from '@popperjs/core';
+import { SharedNote } from '../shared-note';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,6 +14,7 @@ import { end } from '@popperjs/core';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
   user:User = new User();
   friendship:Friendship=new Friendship();
   requestId:string;
@@ -21,6 +23,9 @@ export class UserProfileComponent implements OnInit {
   constructor(private usersService:UserService, private noteService:NoteService, private router:Router) { }
   notes: Note[];
   ngOnInit(): void {
+    if(!localStorage.getItem("idUser")){
+      window.location.href = "home";
+    }
     this.loadUser()
     console.log(localStorage.getItem("profileType"))
     if (localStorage.getItem("profileType")=="applicant"){
@@ -54,8 +59,10 @@ export class UserProfileComponent implements OnInit {
       if(localStorage.getItem("profileType")=="applicant"){
         this.getRequest(localStorage.getItem("idUser")!,this.user._id.$oid)
       }
+      if(localStorage.getItem("profileType")=="friends"){
+        this.getAllNotesByUserId(this.user.username)
+      }
       
-      this.getAllNotesByUserId(this.user.username)
     },error =>{
       console.log(error)
     })
@@ -108,5 +115,18 @@ export class UserProfileComponent implements OnInit {
     localStorage.setItem("profileType","")
     
 
+  }
+  requestNote(note:Note) {
+    let sharedNote:SharedNote = new SharedNote()
+    
+    sharedNote.noteId=note._id.$oid
+    sharedNote.userId=localStorage.getItem("idUser")!
+    sharedNote.state=false
+    console.log(sharedNote)
+    this.noteService.shareNote(sharedNote).subscribe(data=>{
+      alert("Request sent")
+    },error=>{
+      console.log(error)
+    })
   }
 }

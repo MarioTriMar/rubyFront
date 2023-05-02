@@ -1,0 +1,74 @@
+<div class="d-flex" id="content-wrapper" style="min-height: 2000px !important">
+    <div id="sidebar-container" class="border-right sidebar-container">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div id="page-content-wrapper" class="w-100 bg-light-blue" style="background-color: #f0f0f0">
+        <app-head-nav></app-head-nav>
+        <div *ngIf="!isAdmin" class="input-group rounded" style="margin-top: 20px !important; margin-left: 12px !important; width: 500px !important;">
+            <input id="collectionName" type="text" placeholder="Add Collection" type="search" class="form-control rounded"
+                aria-label="Search" aria-describedby="search-addon" [(ngModel)]="collection.name"/>
+            <span class="input-group-text border-0" id="search-addon" (click)="createCollection()" >
+                <i class="fas fa-add"></i>
+            </span>
+        </div>
+        <div class="container mt-5">
+            <table class="table table-borderless table-responsive card-1 p-4">
+                <thead>
+                    <tr class="border-bottom">
+                        <th>
+                            <span class="ml-2">Name of Collection</span>
+                        </th>
+                        <th>
+                            <span class="ml-2">Number of Notes</span>
+                        </th>
+                        <th>
+                            <span class="ml-2">Created At</span>
+                        </th>
+                        <th>
+                            <span class="ml-2">Updated At</span>
+                        </th>
+                        <th>
+                            <span class="ml-4">Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-bottom" *ngFor="let collection of collections">
+                        <td>
+                            <div class="p-2 d-flex flex-row align-items-center mb-2">
+                                <div class="d-flex flex-column ml-2">
+                                    <span class="d-block font-weight-bold">{{collection.name}}</span>
+                                </div>
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="p-2">
+                                <span class="font-weight-bold">{{collection.notes.length}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="p-2">
+                                <span
+                                    class="d-block font-weight-bold">{{collection.created_at.toString().substring(0,10)}}</span>
+                                <small>{{collection.created_at.toString().substring(11, 19)}}</small>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="p-2">
+                                <span
+                                    class="d-block font-weight-bold">{{collection.updated_at.toString().substring(0,10)}}</span>
+                                <small>{{collection.updated_at.toString().substring(11, 19)}}</small>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="p-2 icons">
+                                <i (click)="deleteCollection(collection)" class="fa-solid fa-trash-can"
+                                    style="color: #c80000;"></i>
+                                <i *ngIf="!isAdmin" (click)="loadCollection(collection)" class="fa fa-eye"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>

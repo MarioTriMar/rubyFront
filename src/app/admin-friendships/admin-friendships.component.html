@@ -1,0 +1,61 @@
+<div class="d-flex" id="content-wrapper" style="min-height: 2000px !important">
+  <div id="sidebar-container" class="border-right sidebar-container">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div id="page-content-wrapper" class="w-100 bg-light-blue">
+    <app-head-nav> </app-head-nav>
+    <div class="container bg-light" style=" background-size: cover;">
+      <div class="row">
+        <h3 style="text-align:center; margin-top:20px; margin-bottom:20px;">Friends Management</h3>
+        <div class="col-sm-12">
+          <div class="container">
+            <div class="table-responsive">
+              <div class="col-sm-12">
+                <table id="example" class="table table-striped" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let friendship of displayData">
+                      <td style="vertical-align: middle; text-align:center">
+                        <div style="vertical-align: middle;" style="height:55px; width:55px;">
+                          <img class="img-account-profile rounded-circle mb-5" src="{{friendship.userA.image}}"
+                            style="height:55px; width:55px;">
+                        </div>
+                      </td>
+                      <td>{{friendship.userA.username}}</td>
+                      <td style="vertical-align: middle; text-align:center">
+                        <div style="vertical-align: middle;" style="height:55px; width:55px;">
+                          <img class="img-account-profile rounded-circle mb-5" src="{{friendship.userB.image}}"
+                            style="height:55px; width:55px;">
+                        </div>
+                      </td>
+                      <td>{{friendship.userB.username}}</td>
+                      <td><button  class="btn btn-danger" style="margin: 10px" (click)="deleteFriendship(friendship)">
+                        <i class="fa-solid fa-trash-can fa-lg" style="color: #ffffff;"></i>
+                      </button></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <span>
+                  <button class="badge badge-light" style="color: black;margin-right:5px" (click)="PrevPage()"><a
+                      class="page-link">Previous</a></button>
+                  <button class="badge badge-light" style="color: black;margin-right:5px" (click)="nextPage()"><a
+                      class="page-link">Next</a></button>
+                </span>
+                <div class="clearfix">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
