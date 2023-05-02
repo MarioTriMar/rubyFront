@@ -14,11 +14,13 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
+    
   }
   login(){
     this.userService.login(this.email, this.password).subscribe(data=>{
-      localStorage.setItem("idUser", data._id)
+      localStorage.setItem("idUser", data._id.$oid)
       localStorage.setItem("username", data.username)
+      localStorage.setItem("tokenSessionTipo", data.type)
       this.router.navigate(['/noteManagement']);
     }, (error)=>{
       alert(error.error.msg)

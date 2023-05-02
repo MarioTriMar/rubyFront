@@ -1,0 +1,117 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="sidebar.component.css" />
+
+<div *ngIf="this.tipoUsuario=='user'" class="wrapper d-flex align-items-stretch" style="height: 100% !important;">
+  <nav id="sidebar">
+    <div class="p-4 pt-5">
+      <div style="text-align: center;">
+        <img class="img-account-profile rounded-circle mb-5" src="{{user.image}}" style="height:125px; width:125px"/>
+      </div>
+      <h3 style="
+          font-weight: bold;
+          text-transform: uppercase;
+          color: white;
+          text-align: center;
+        ">
+        {{ username }}
+      </h3>
+      <ul class="list-unstyled components mb-5">
+        <li>
+          <a href="#homeNotes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
+              class="fa-solid fa-note-sticky" style="color: #ffffff;margin-right:10px"></i>Notes</a>
+          <ul class="collapse list-unstyled" id="homeNotes">
+            <li>
+              <a (click)="gestionNotas()"><i class="fa-solid fa-note-sticky"
+                  style="color: #ffffff;margin-right:10px"></i>My notes</a>
+            </li>
+            <li>
+              <a (click)="sharedNotes()"><i class="fa-solid fa-share-nodes"
+                  style="color: #ffffff;margin-right:10px"></i>Shared notes</a>
+            </li>
+            <li>
+              <a (click)="noteRequest()"><i class="fa-solid fa-inbox" style="color: #ffffff;margin-right:10px"></i>Notes
+                requests</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#homeFriends" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
+              class="fa-solid fa-user-group" style="color: #ffffff;margin-right:10px"></i>Friends</a>
+          <ul class="collapse list-unstyled" id="homeFriends">
+            <li>
+              <a (click)="usersFriendship()"><i class="fa-solid fa-user-plus"
+                  style="color: #ffffff;margin-right:10px"></i>Add friend</a>
+            </li>
+            <li>
+              <a (click)="friendshipRequests()"><i class="fa-solid fa-inbox"
+                  style="color: #ffffff;margin-right:10px"></i>Friends requests</a>
+            </li>
+            <li>
+              <a (click)="friends()"><i class="fa-solid fa-user-group" style="color: #ffffff;margin-right:10px"></i>My
+                friends</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a (click)="gestionCollections()"><i class="fa-solid fa-book" style="color: #ffffff;margin-right:10px"></i>Collections</a>
+        </li>
+        <li>
+          <a (click)="myProfile()"><i class="fa-solid fa-gear" style="color: #ffffff;margin-right:10px"></i>Edit
+            profile</a>
+        </li>
+        <li>
+          <a (click)="logout()"><i class="fa-solid fa-right-from-bracket"
+              style="color: #ffffff;margin-right:10px"></i>Exit</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div *ngIf="this.tipoUsuario=='admin'" class="wrapper d-flex align-items-stretch" style="height: 100% !important;">
+  <nav id="sidebar">
+    <div class="p-4 pt-5">
+      <div style="text-align: center;">
+        <img class="img-account-profile rounded-circle mb-5" src="../../assets/cherry_logo.png"
+          style="height:125px; width:125px" alt="" />
+      </div>
+      <h3 style="
+          font-weight: bold;
+          text-transform: uppercase;
+          color: white;
+          text-align: center;
+        ">
+        {{ username }}
+      </h3>
+      <ul class="list-unstyled components mb-5">
+        <li>
+          <a (click)="gestionNotas()"><i class="fa-solid fa-sticky-note" style="color: #ffffff;margin-right:10px"></i>Notes Management</a>
+        </li>
+
+        <li>
+          <a (click)="gestionUsuarios()"><i class="fa-solid fa-user" style="color: #ffffff;margin-right:10px"></i>Users Management</a>
+        </li>
+        <li>
+          <a (click)="gestionFriends()"><i class="fa-solid fa-user-group" style="color: #ffffff;margin-right:10px"></i>Friends Management</a>
+        </li>
+        <li>
+          <a (click)="gestionCollections()"><i class="fa-solid fa-book" style="color: #ffffff;margin-right:10px"></i>Collections Management</a>
+        </li>
+        <li>
+          <a (click)="logout()"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;margin-right:10px"></i>Exit</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- Modal -->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>

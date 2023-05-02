@@ -10,6 +10,21 @@ import { HeadNavComponent } from './head-nav/head-nav.component';
 import { NoteCreationComponent } from './note-creation/note-creation.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { UsersManagementComponent } from './users-management/users-management.component';
+import { UsersFriendshipComponent } from './users-friendship/users-friendship.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FriendshipsRequestsComponent } from './friendships-requests/friendships-requests.component';
+import { FriendsComponent } from './friends/friends.component';
+import { ShareNoteComponent } from './share-note/share-note.component';
+import { NoteRequestsComponent } from './note-requests/note-requests.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { CollectionManagementComponent } from './collection-management/collection-management.component';
+import { CollectionNotesComponent } from './collection-notes/collection-notes.component';
+import { AddnoteCollectionComponent } from './addnote-collection/addnote-collection.component';
+import { AdminFriendshipsComponent } from './admin-friendships/admin-friendships.component';
+import { AdminSharedNotesComponent } from './admin-shared-notes/admin-shared-notes.component';
+import { MySharednotesComponent } from './my-sharednotes/my-sharednotes.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +33,22 @@ import { RegisterComponent } from './register/register.component';
     NotesManagementComponent,
     HeadNavComponent,
     NoteCreationComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    UsersManagementComponent,
+    UsersFriendshipComponent,
+    UserProfileComponent,
+    FriendshipsRequestsComponent,
+    FriendsComponent,
+    ShareNoteComponent,
+    NoteRequestsComponent,
+    MyProfileComponent,
+    CollectionManagementComponent,
+    CollectionNotesComponent,
+    AddnoteCollectionComponent,
+    AdminFriendshipsComponent,
+    AdminSharedNotesComponent,
+    MySharednotesComponent
   ],
   imports: [
     BrowserModule,
